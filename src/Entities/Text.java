@@ -17,7 +17,7 @@ public class Text
 	private int id;
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "location_id", nullable = false)
-	private int location_id;
+	private Location location_id;
 	private String bigtext;
 	
 	public Text()
@@ -25,7 +25,7 @@ public class Text
 	
 	}
 
-	public Text(int id, int location_id, String bigtext)
+	public Text(int id, Location location_id, String bigtext)
 	{
 	
 		this.id = id;
@@ -44,7 +44,7 @@ public class Text
 	/**
 	 * @return the location_id
 	 */
-	public int getLocation_id()
+	public Location getLocation_id()
 	{
 		return location_id;
 	}
@@ -60,7 +60,7 @@ public class Text
 	/**
 	 * @param location_id the location_id to set
 	 */
-	public void setLocation_id(int location_id)
+	public void setLocation_id(Location location_id)
 	{
 		this.location_id = location_id;
 	}

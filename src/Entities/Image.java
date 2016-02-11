@@ -17,7 +17,7 @@ public class Image
 	private int id;
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "location_id", nullable = false)
-	private int location_id;
+	private Location location_id;
 	private String img_src;
 	private String img_text;
 	
@@ -26,7 +26,7 @@ public class Image
 		
 	}
 
-	public Image(int id, int location_id, String img_src, String img_text)
+	public Image(int id, Location location_id, String img_src, String img_text)
 	{
 		super();
 		this.id = id;
@@ -46,7 +46,7 @@ public class Image
 	/**
 	 * @return the location_id
 	 */
-	public int getLocation_id()
+	public Location getLocation_id()
 	{
 		return location_id;
 	}
@@ -70,7 +70,7 @@ public class Image
 	/**
 	 * @param location_id the location_id to set
 	 */
-	public void setLocation_id(int location_id)
+	public void setLocation_id(Location location_id)
 	{
 		this.location_id = location_id;
 	}

@@ -20,13 +20,21 @@ public class User
 	private String username;
 	private String email;
 	private String password;
-	@OneToMany(mappedBy = "user_id")
-	private Collection<Trip> Trips;
+//	@OneToMany(mappedBy = "user_id")
+//	private Collection<Trip> Trips;
 	
 	
 	public User()
 	{
 		
+	}
+	public User(String username, String email, String password)
+	{
+		super();
+		
+		this.username = username;
+		this.email = email;
+		this.password = password;
 	}
 	public User(int id, String username, String email, String password)
 	{

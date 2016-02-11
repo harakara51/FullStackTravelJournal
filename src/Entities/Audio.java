@@ -17,7 +17,7 @@ public class Audio
 	private int id;
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "location_id", nullable = false)
-	private int location_id;
+	private Location location_id;
 	private String audio_src;
 	private String audio_text;
 	
@@ -26,7 +26,7 @@ public class Audio
 		
 	}
 
-	public Audio(int id, int location_id, String audio_src, String audio_text)
+	public Audio(int id, Location location_id, String audio_src, String audio_text)
 	{
 		super();
 		this.id = id;
@@ -46,7 +46,7 @@ public class Audio
 	/**
 	 * @return the location_id
 	 */
-	public int getLocation_id()
+	public Location getLocation_id()
 	{
 		return location_id;
 	}
@@ -70,7 +70,7 @@ public class Audio
 	/**
 	 * @param location_id the location_id to set
 	 */
-	public void setLocation_id(int location_id)
+	public void setLocation_id(Location location_id)
 	{
 		this.location_id = location_id;
 	}

@@ -20,7 +20,7 @@ public class Trip
 	private int id;
 	@ManyToOne(optional = false)
 	 @JoinColumn(name = "user_id", nullable = false)
-	private int user_id;
+	private User user_id;
 	@OneToMany(mappedBy = "trip_id")
 	private Collection<Location> Locations;
 	
@@ -29,7 +29,7 @@ public class Trip
 		
 	}
 
-	public Trip(int id, int user_id)
+	public Trip(int id, User user_id)
 	{
 		this.id = id;
 		this.user_id = user_id;
@@ -46,7 +46,7 @@ public class Trip
 	/**
 	 * @return the user_id
 	 */
-	public int getUser_id()
+	public User getUser_id()
 	{
 		return user_id;
 	}
@@ -54,7 +54,7 @@ public class Trip
 	/**
 	 * @param user_id the user_id to set
 	 */
-	public void setUser_id(int user_id)
+	public void setUser_id(User user_id)
 	{
 		this.user_id = user_id;
 	}

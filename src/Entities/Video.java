@@ -18,7 +18,7 @@ public class Video
 	private int id;
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "location_id", nullable = false)
-	private int location_id;
+	private Location location_id;
 	
 	private String video_src;
 	private String video_text;
@@ -26,7 +26,7 @@ public class Video
 	{
 		
 	}
-	public Video(int id, int location_id, String video_src, String video_text)
+	public Video(int id, Location location_id, String video_src, String video_text)
 	{
 		super();
 		this.id = id;
@@ -44,7 +44,7 @@ public class Video
 	/**
 	 * @return the location_id
 	 */
-	public int getLocation_id()
+	public Location getLocation_id()
 	{
 		return location_id;
 	}
@@ -65,7 +65,7 @@ public class Video
 	/**
 	 * @param location_id the location_id to set
 	 */
-	public void setLocation_id(int location_id)
+	public void setLocation_id(Location location_id)
 	{
 		this.location_id = location_id;
 	}

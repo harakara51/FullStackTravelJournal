@@ -20,7 +20,7 @@ public class Location
 	private int id;
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "trip_id", nullable = false)
-	private int trip_id;
+	private Trip trip_id;
 	@OneToMany(mappedBy = "location_id")
 	private Collection<Audio> Audios;
 	
@@ -41,7 +41,7 @@ public class Location
 		
 	}
 
-	public Location(int id, int trip_id)
+	public Location(int id, Trip trip_id)
 	{
 		super();
 		this.id = id;
@@ -59,7 +59,7 @@ public class Location
 	/**
 	 * @return the trip_id
 	 */
-	public int getTrip_id()
+	public Trip getTrip_id()
 	{
 		return trip_id;
 	}
@@ -67,7 +67,7 @@ public class Location
 	/**
 	 * @param trip_id the trip_id to set
 	 */
-	public void setTrip_id(int trip_id)
+	public void setTrip_id(Trip trip_id)
 	{
 		this.trip_id = trip_id;
 	}
