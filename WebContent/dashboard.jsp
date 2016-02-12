@@ -22,7 +22,7 @@
         
           <div class="card indigo lighten-4" id="newUser">
            
-           <h1> Here is the dashboard</h1>
+           ${user.password}
             </div>
 
 </div>
