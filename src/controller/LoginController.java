@@ -62,12 +62,6 @@ public LoginDAO loginDAO = new LoginDAO();
 		// System.out.println("In controller and size of array is" +
 		// NovelDAO.getNovelByLanguage(language).size());
 		mv.setViewName("newUser.jsp");
-		
-		
-
-		
-		
-
 		return mv;
 	}
 	

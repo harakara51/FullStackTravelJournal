@@ -1,0 +1,37 @@
+
+#tripViewer {
+	
+	width: 60%;
+	margin: 0 auto;
+}
+
+
+#test{
+	display:inline-block;
+	width: 100%;
+	margin:0 auto;
+}
+
+
+
+#editTrip {
+
+	width:30%;
+	
+}
+
+#addTrip {
+	
+	width:30%;
+	
+}
+
+ body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
