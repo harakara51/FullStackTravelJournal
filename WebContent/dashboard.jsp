@@ -19,6 +19,14 @@
 </head>
 ​
 <body>
+     
+​
+<div class="row" id ="test">
+        
+          <div class="card indigo lighten-4" id="newUser">
+           
+           ${user.password}
+            </div>
 
 <div clas ="row" id ="tripViewer">
 

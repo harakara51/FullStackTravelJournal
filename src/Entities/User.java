@@ -7,11 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
+@NamedQuery(name = "User.getUserByName", query =
+		"select u from User u where u.username= :name and u.password =:password")
 public class User
 {
 	@Id
