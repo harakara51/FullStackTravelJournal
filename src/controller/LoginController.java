@@ -1,5 +1,6 @@
 package controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,15 +9,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import data.LoginDAO;
-
-
+import Data.LoginDAO;
 
 
 @Controller
 @SessionAttributes({ "username","password"})
 public class LoginController{
-public LoginDAO loginDAO = new LoginDAO();
+	@Autowired
+	private LoginDAO loginDAO;
 
 
 	

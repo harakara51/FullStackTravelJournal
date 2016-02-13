@@ -3,6 +3,7 @@
 	<name>TravelJournal</name>
 	<comment></comment>
 	<projects>
+		<project>TravelJournalDB</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
