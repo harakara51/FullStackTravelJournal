@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import Data.LoginDAO;
+import Data.TravelDAO;
 import Entities.User;
 
 
@@ -18,7 +19,8 @@ import Entities.User;
 public class LoginController{
 	@Autowired
 	private LoginDAO loginDAO;
-
+	private TravelDAO travelDAO;
+public static String USERNAME;
 
 	
 	@ModelAttribute("username")
@@ -40,7 +42,9 @@ public class LoginController{
 	public ModelAndView getByName(@RequestParam("username") String username, @RequestParam("password") String password)
 	{
 		ModelAndView mv = new ModelAndView();
-
+		mv.addObject("username",username);
+		mv.addObject("password",password);
+		USERNAME = username;
 	   User user =loginDAO.getUserByUsername(username);
 	   User userPW =loginDAO.getUserByPassword(password);
 	  
@@ -56,14 +60,14 @@ public class LoginController{
 	   {
 		   System.out.println("In null ");
 		   mv.setViewName("index.jsp"); 
-		   String userNotFound ="Username or Password is incorrect";
+		   String userNotFound ="Username is incorrect";
 		   mv.addObject("user",userNotFound );
 		   return mv;
 	   }
 	   else if (userPW ==null)
 	   {
 		   mv.setViewName("index.jsp"); 
-		   String wrongPW ="Username or Password is incorrect";
+		   String wrongPW ="Password is incorrect";
 		   mv.addObject("user",wrongPW );
 		   return mv;
 		   
@@ -95,17 +99,28 @@ public class LoginController{
 		
 		System.out.println("inside method to submit data to database");
 		System.out.println("username :" + username + " password " + password + " " + email);
-		Boolean newUser =true;
+		
 		
 		ModelAndView mv = new ModelAndView();
 		
 		
 
-		 loginDAO.creatNewUser(username, password, email);
-		// System.out.println("In controller and size of array is" +
-		// NovelDAO.getNovelByLanguage(language).size());
+		String userExist =loginDAO.creatNewUser(username, password, email);
+		
+		if (userExist == null)
+		{		
 		mv.setViewName("index.jsp");
 		return mv;
+		}
+		else
+		{
+			mv.addObject("userExist",userExist );
+			mv.setViewName("newUser.jsp");
+		return mv;
+			
+		}
+		
+		
 	}
 	
 

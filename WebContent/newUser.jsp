@@ -32,7 +32,12 @@
 					<div class="row">
 						<div class="input-field col s10">
 							<input id="username" name="username" type="text"
-								class="validate"> <label for="username">Username</label>
+								class="validate" placeholder = "<c:choose>
+		<c:when test="${! empty userExist}">
+			${userExist}
+
+		</c:when>
+	</c:choose>"> <label for="username">Username</label>
 						</div>
 					</div>
 					<div class="row">

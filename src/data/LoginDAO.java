@@ -7,12 +7,16 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import Entities.Trip;
 import Entities.User;
 
 @Transactional
 public class LoginDAO {
 	@PersistenceContext
 	private EntityManager em;
+	
+	
+	//public boolean getUserByUsername(String userName)
 	
 	public User getUserByUsername(String userName){ 
 		
@@ -24,7 +28,7 @@ public class LoginDAO {
 			System.out.println("in method to get user based on username and the username is " + userName);	
 		Temp =(User)em.createNamedQuery("User.getUserByName")
         .setParameter("name", userName).getSingleResult();
-		System.out.println("username is not nul " + Temp.getUsername());
+		System.out.println("username is not nul " + Temp.getUsername() +  " and password is  " + Temp.getPassword());
 		}
 		catch (Exception e)
 		{
@@ -42,7 +46,7 @@ public class LoginDAO {
 	public User getUserByPassword(String password){ 
 		
 		User Temp;
-		System.out.println("in method to get user based on password");
+		System.out.println("in method to get user based on password " + password);
 		
 		try {
 			Temp =(User)em.createNamedQuery("User.getUserByPassword")
@@ -62,14 +66,26 @@ public class LoginDAO {
 	
 	}
 	
-	public void creatNewUser (String username, String password, String email)
+	public String creatNewUser (String username, String password, String email)
 	{
-		
+			User Temp =(User)em.createNamedQuery("User.getUserByName")
+			        .setParameter("name", username).getSingleResult();
+		if(Temp!= null)
+		{
+			return "Username already in use";
+		}
+		else 
+		{
+			
 		User newUser = new User(username,password, email);
 		System.out.println(newUser.getEmail());
 		em.persist(newUser);
-	
+		
+		return null;
+		}
 	}
+	
+	
 	
 
 }
