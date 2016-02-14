@@ -6,29 +6,51 @@
 }
 
 
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #909;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #909;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #909;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #909;
+}
+:placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
+  color:    #909;
+}
+
+
+
 #test{
 	display:inline-block;
 	width: 100%;
 	margin:0 auto;
 }
 
-
-
-#editTrip {
-
-	width:30%;
+#loginCard {
+	
+	width: 40%;
+	margin:0 auto;
+	margin-top: 10%
 	
 }
+
 
 #addTrip {
 	
 	width:30%;
-	
+	margin:0 auto;
 }
 
 
 
  body {
+ background-color:#ffca28;
     display: flex;
     min-height: 100vh;
     flex-direction: column;

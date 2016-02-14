@@ -25,7 +25,7 @@
         
           <div class="card indigo lighten-4" id="newUser">
            
-           ${user.password}
+          Hello  ${user.username}
             </div>
 
 <div clas ="row" id ="tripViewer">
@@ -42,53 +42,29 @@
  
   </ul>
 </div>
-	​ ​
-	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script src="js/materialize.js"></script>
-	<script src="js/jquery.lettering.js"></script>
-</body>
-<footer class="page-footer">
-          <div class="container">
-            <div class="row">
-             
-                
-             <div class="row" id="test">
 
-		<div class="card indigo lighten-4" id="editTrip">
-			<div class="card-content white-text">
-				<form action="GetUserTravel.do" method="POST">
-					<span class="card-title">Edit Trip</span>
-
-
-					<button class="btn waves-effect waves-light blue darken-2"
-						type="submit">
-						Edit Trip <i class="material-icons right">send</i>
-					</button>
-				</form>
-
-
-			</div>
-
-		</div>
-
+  <div class="row" id="test">
 
 		<div class="card indigo lighten-4" id="addTrip"">
 			<div class="card-content white-text">
 				<form action="GetUserTravel.do" method="POST">
-					<span class="card-title">Add Trip</span>
-
 
 					<button class="btn waves-effect waves-light blue darken-2"
 						type="submit">
-						Add Trip <i class="material-icons right">send</i>
+						Add a Trip <i class="material-icons right">send</i>
 					</button>
 				</form>
 			</div>
 		</div>
 	</div>
+	​ ​
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="js/materialize.js"></script>
+	<script src="js/jquery.lettering.js"></script>
+</body>
+
+             
                 
-              </div>
-            </div>
-          </div>
+           
+
           
-        </footer>
