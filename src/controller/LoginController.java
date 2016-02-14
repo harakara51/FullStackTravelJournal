@@ -98,7 +98,10 @@ public class LoginController{
 		Boolean newUser =true;
 		
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("userNew", newUser);
+		
+		
+
+		 loginDAO.creatNewUser(username, password, email);
 		// System.out.println("In controller and size of array is" +
 		// NovelDAO.getNovelByLanguage(language).size());
 		mv.setViewName("index.jsp");

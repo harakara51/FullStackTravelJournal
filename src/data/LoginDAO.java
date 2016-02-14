@@ -61,5 +61,15 @@ public class LoginDAO {
 		return Temp;
 	
 	}
+	
+	public void creatNewUser (String username, String password, String email)
+	{
+		
+		User newUser = new User(username,password, email);
+		System.out.println(newUser.getEmail());
+		em.persist(newUser);
+	
+	}
+	
 
 }
