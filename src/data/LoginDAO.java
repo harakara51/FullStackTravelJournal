@@ -1,4 +1,4 @@
-package Data;
+package data;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -26,6 +26,7 @@ public class LoginDAO {
 		try {
 			
 			System.out.println("in method to get user based on username and the username is " + userName);	
+			
 		Temp =(User)em.createNamedQuery("User.getUserByName")
         .setParameter("name", userName).getSingleResult();
 		System.out.println("username is not nul " + Temp.getUsername() +  " and password is  " + Temp.getPassword());
@@ -68,16 +69,24 @@ public class LoginDAO {
 	
 	public String creatNewUser (String username, String password, String email)
 	{
-			User Temp =(User)em.createNamedQuery("User.getUserByName")
+		User Temp;
+		try {
+			
+	
+			Temp =(User)em.createNamedQuery("User.getUserByName")
 			        .setParameter("name", username).getSingleResult();
+		}
+		catch (Exception e) {
+			Temp=null;
+		}
 		if(Temp!= null)
 		{
 			return "Username already in use";
 		}
 		else 
 		{
-			
-		User newUser = new User(username,password, email);
+		boolean isAdmin=false;
+		User newUser = new User(username,password, email, isAdmin);
 		System.out.println(newUser.getEmail());
 		em.persist(newUser);
 		
