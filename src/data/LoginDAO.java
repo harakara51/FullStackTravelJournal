@@ -70,14 +70,16 @@ public class LoginDAO {
 	public String creatNewUser (String username, String password, String email)
 	{
 		User Temp;
-		try {
-			
-	
+		System.out.println("In method to create user");
+		try 
+		{
 			Temp =(User)em.createNamedQuery("User.getUserByName")
 			        .setParameter("name", username).getSingleResult();
 		}
-		catch (Exception e) {
-			Temp=null;
+		catch (Exception e)
+		{
+			Temp =null;
+
 		}
 		if(Temp!= null)
 		{
@@ -85,13 +87,15 @@ public class LoginDAO {
 		}
 		else 
 		{
-		boolean isAdmin=false;
+
+		boolean isAdmin = false;
 		User newUser = new User(username,password, email, isAdmin);
 		System.out.println(newUser.getEmail());
 		em.persist(newUser);
 		
 		return null;
 		}
+	
 	}
 	
 	

@@ -20,7 +20,19 @@ public class TravelController{
 	private LoginDAO loginDAO;
 public static String USERNAME;
 
-	
+@ModelAttribute("username")
+public String createUserName()
+{
+	String username="";
+	return username;
+}
+
+@ModelAttribute("password")
+public String createPassword()
+{
+	String password="";
+	return password;
+}
 	
 	
 	
