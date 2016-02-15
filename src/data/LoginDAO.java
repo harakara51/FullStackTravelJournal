@@ -68,21 +68,31 @@ public class LoginDAO {
 	
 	public String creatNewUser (String username, String password, String email)
 	{
-			User Temp =(User)em.createNamedQuery("User.getUserByName")
+		User Temp;
+		System.out.println("In method to create user");
+		try 
+		{
+			Temp =(User)em.createNamedQuery("User.getUserByName")
 			        .setParameter("name", username).getSingleResult();
+		}
+		catch (Exception e)
+		{
+			Temp =null;
+		}
 		if(Temp!= null)
 		{
 			return "Username already in use";
 		}
 		else 
 		{
-			
-		User newUser = new User(username,password, email);
+		boolean isAdmin = false;
+		User newUser = new User(username,password, email, isAdmin);
 		System.out.println(newUser.getEmail());
 		em.persist(newUser);
 		
 		return null;
 		}
+	
 	}
 	
 	

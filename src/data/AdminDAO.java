@@ -1,8 +1,9 @@
 package Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -12,18 +13,20 @@ import Entities.User;
 import controller.LoginController;
 
 @Transactional
-public class TravelDAO {
+public class AdminDAO
+{
+
 	@PersistenceContext
 	private EntityManager em;
 	
 	LoginDAO loginDAO = new LoginDAO();
 	
-	public void creatNewUser (String username, String password, String email)
+	public List<User> getALLUser ()
 	{
-		boolean isAdmin =false;
-		User newUser = new User(username,password, email,isAdmin);
-		System.out.println(newUser.getEmail());
-		em.persist(newUser);
+		
+		List<User> allusers = new ArrayList<>(); 
+		allusers = em.createNamedQuery("User.getUserByName").getResultList();
+		return null;
 	
 	}
 	
@@ -46,6 +49,5 @@ public class TravelDAO {
 		em.persist(newUser);
 	
 	}
-	
 
 }
