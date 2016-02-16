@@ -17,41 +17,49 @@
 <link href="css/style.css" type="text/css" rel="stylesheet"
 	media="screen,projection" />
 </head>
-
+​
 <body>
-	​
-	<nav>
-		<div class="nav-wrapper indigo">
-			<a href="#" class="brand-logo right">Travel Journal</a>
-			<ul id="nav-mobile" class="left hide-on-med-and-down">
-				<li>Hello ${user.username}</li>
-				<li><a href="badges.html">View Journal</a></li>
-				<li><a href="index.jsp">Logout</a></li>
-			</ul>
-		</div>
-	</nav>
+
 	​
 	<div class="row" id="test">
 
-		<div class="card indigo lighten-4" id="newUser"></div>
-</div>
+		<div class="card indigo lighten-4" id="newUser">Hello
+			${user.username}</div>
+
 		<div class="row" id="tripViewer">
 
 			<ul class="collapsible" data-collapsible="accordion">
-				<li>
-					<div class="collapsible-header">
-						<i class="material-icons">grade</i>First trip
-					</div>
-					<div class="collapsible-body">
-						<p>Stuff for the first trip</p>
-					</div>
+				<c:choose>
+					<c:when test="${! empty user.trips}">
+						<table id="triplist">
+							<c:forEach var="trip" items="${trip}">
+								<li>
+									<div class="collapsible-header">
+										<i class="material-icons">grade</i>${trip.name}</div> <c:forEach
+										var="location" items="${location}">
+										<div class="collapsible-body">
+											<p>${location.locationName}</p>
+										</div>
+										<form action="modifylocation.do" method="POST">
+											<input type="submit" name="edit" value="Edit"> <input
+												type="submit" name="delete" value="Delete"> <input
+												type="submit" name="view" value="View">
+										</form>
+									</c:forEach>
+								    <form action="addtrip.do" method="POST">
+											<input type="submit" name="Add" value="Add">
+							</c:forEach>
+						</table>
+					</c:when>
+				</c:choose>
+
 				</li>
 				<li>
 					<div class="collapsible-header">
 						<i class="material-icons">grade</i>Second
 					</div>
 					<div class="collapsible-body">
-						<p>Stuff for the Second</p>
+						 
 					</div>
 				</li>
 
@@ -59,9 +67,6 @@
 		</div>
 
 		<div class="row" id="test">
-
-
-
 
 			<div class="card indigo lighten-4" id="addTrip"">
 				<div class="card-content white-text">

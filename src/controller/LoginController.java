@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import Entities.User;
+
+
 import data.AdminDAO;
 import data.LoginDAO;
 import data.TravelDAO;
+
+import Entities.User;
 
 @Controller
 @SessionAttributes(

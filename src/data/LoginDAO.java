@@ -26,6 +26,7 @@ public class LoginDAO {
 		try {
 			
 			System.out.println("in method to get user based on username and the username is " + userName);	
+			
 		Temp =(User)em.createNamedQuery("User.getUserByName")
         .setParameter("name", userName).getSingleResult();
 		System.out.println("username is not nul " + Temp.getUsername() +  " and password is  " + Temp.getPassword());
@@ -78,6 +79,7 @@ public class LoginDAO {
 		catch (Exception e)
 		{
 			Temp =null;
+
 		}
 		if(Temp!= null)
 		{
@@ -85,6 +87,7 @@ public class LoginDAO {
 		}
 		else 
 		{
+
 		boolean isAdmin = false;
 		User newUser = new User(username,password, email, isAdmin);
 		System.out.println(newUser.getEmail());

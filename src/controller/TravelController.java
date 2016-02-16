@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import Entities.User;
+
 import data.LoginDAO;
+
+import Entities.User;
+
 
 
 @Controller
@@ -20,7 +23,19 @@ public class TravelController{
 	private LoginDAO loginDAO;
 public static String USERNAME;
 
-	
+@ModelAttribute("username")
+public String createUserName()
+{
+	String username="";
+	return username;
+}
+
+@ModelAttribute("password")
+public String createPassword()
+{
+	String password="";
+	return password;
+}
 	
 	
 	
