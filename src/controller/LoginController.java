@@ -49,7 +49,6 @@ public class LoginController
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("username", username);
 		mv.addObject("password", password);
-		USERNAME = username;
 		User user = loginDAO.getUserByUsername(username);
 		User userPW = loginDAO.getUserByPassword(password);
 
@@ -69,6 +68,7 @@ public class LoginController
 			} else
 			{
 				mv.setViewName("dashboard.jsp");
+				TravelDAO.setLoggedin(user); 
 				mv.addObject("user", user);
 				System.out.println("in user login controller");
 

@@ -15,26 +15,30 @@ import controller.LoginController;
 public class TravelDAO {
 	@PersistenceContext
 	private EntityManager em;
+	public static User loggedin;
 	
 	LoginDAO loginDAO = new LoginDAO();
 	
-	public void creatNewUser (String username, String password, String email)
-	{
-		boolean isAdmin =false;
-		User newUser = new User(username,password, email,isAdmin);
-		System.out.println(newUser.getEmail());
-		em.persist(newUser);
-	
+	public static void setLoggedin(User l) {
+		loggedin = l;
 	}
 	
-	public void creatNewTrip ()
+	
+
+	
+	public void createNewTrip (String tripName, String dateStarted, String dateEnded)
 	{
-		User User_ID = loginDAO.getUserByUsername(LoginController.USERNAME);
+		
+		
+			System.out.println("In method to create trip");
+
 			
-		Trip newTrip = new Trip(User_ID);
-		User_ID.setTrips(newTrip);	
-		System.out.println(newTrip.getId());
-		em.persist(newTrip);
+			Trip newTrip = new Trip(loggedin, tripName,dateStarted, dateEnded);
+			System.out.println(newTrip.getId());
+			em.persist(newTrip);
+		
+		
+		
 	
 	}
 	

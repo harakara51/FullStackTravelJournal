@@ -46,8 +46,7 @@
 												type="submit" name="view" value="View">
 										</form>
 									</c:forEach>
-								    <form action="addtrip.do" method="POST">
-											<input type="submit" name="Add" value="Add">
+							
 							</c:forEach>
 						</table>
 					</c:when>
@@ -70,7 +69,7 @@
 
 			<div class="card indigo lighten-4" id="addTrip"">
 				<div class="card-content white-text">
-					<form action="GetUserTravel.do" method="POST">
+					<form action="addtrip.do" method="POST">
 
 						<button class="btn waves-effect waves-light blue darken-2"
 							type="submit">

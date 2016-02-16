@@ -13,7 +13,8 @@
 
 
 
-	<bean id="dao" class="data.LoginDAO" />
+	<bean id="logindao" class="data.LoginDAO" />
+	<bean id="traveldao" class="data.TravelDAO" />
 
 	<!-- Declare EntityManagerFactory so we can inject an Entity Manager into 
 		our DAO -->
