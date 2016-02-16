@@ -21,11 +21,12 @@ import data.TravelDAO;
 import Entities.User;
 
 @Controller
-@SessionAttributes({ "username"})
+@SessionAttributes({ "user"})
 public class LoginController
 {
 	@Autowired
 	private LoginDAO loginDAO;
+	@Autowired
 	private TravelDAO travelDAO;
 	public static String USERNAME;
 
@@ -33,7 +34,9 @@ public class LoginController
 	public User createUserName()
 	{
 		User user = new User();
+		System.out.println(" In initialization of user session object" );
 		return user;
+		
 	}
 	
 
@@ -64,8 +67,9 @@ public class LoginController
 			{
 				mv.setViewName("dashboard.jsp");
 				TravelDAO.setLoggedin(user); 
+				travelDAO.isUserManaged(user);
 				mv.addObject("user", user);
-			
+			System.out.println("User " + user.hashCode() + "  " + user.getId()) ;
 				System.out.println("in user login controller");
 
 				return mv;

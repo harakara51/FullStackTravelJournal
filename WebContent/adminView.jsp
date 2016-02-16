@@ -3,33 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<html lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
-<title>Travel Journal</title> ​
-<!-- CSS  -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<link href="css/materialize.css" type="text/css" rel="stylesheet"
-	media="screen,projection" />
-<link href="css/style.css" type="text/css" rel="stylesheet"
-	media="screen,projection" />
-</head>
-
-<body>
-	​
-	<nav>
-		<div class="nav-wrapper indigo">
-			<a href="#" class="brand-logo right">Travel Journal</a>
-			<ul id="nav-mobile" class="left hide-on-med-and-down">
-				<li>Hello ${user.username}</li>
-				<li><a href="badges.html">View Journal</a></li>
-				<li><a href="index.jsp">Logout</a></li>
-			</ul>
-		</div>
-	</nav>
+<jsp:include page="navBar.jsp" />​
 	​
 	<div class="row" id="test">
 
