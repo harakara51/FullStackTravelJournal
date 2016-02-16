@@ -19,8 +19,18 @@
 					<h3>${user.username}Trips</h3>
 					<c:forEach var="trip" items="${user.trips}">
 						<li>
+						<form action="deleteTrip.do" method="POST">
+													<button class="btn-floating btn-large red" type="submit">
+														<i class="material-icons right">delete</i>
+													</button>
+													<input type="hidden" name="trip_id"
+														value="${trip.id}">
+
+												</form>
 							<div class="collapsible-header">
 								<i class="material-icons">grade</i>${trip.trip_name}
+								
+									
 							</div>
 
 							<div class="collapsible-body indigo lighten-2">
@@ -28,32 +38,31 @@
 									<c:forEach var="location" items="${trip.locations}">
 										<tr>
 
-											<td colspan ="5">Trip to ${location.locationName}</td>
-<td>
-											
-											</td>
+											<td colspan="5">Trip to ${location.locationName}</td>
+											<td></td>
 											<td>
-											<form action="editlocation.do" method="POST">
-											<input type="hidden" name="location_id" value="${location.id}">
-											<a
-												class="btn-floating btn-large waves-effect waves-light blue"
-												type="submit"> <i class="material-icons">mode_edit</i></a>
+												<form action="editlocation.do" method="POST">
+													<input type="hidden" name="location_id"
+														value="${location.id}">
+													<button
+														class="btn-floating btn-large waves-effect waves-light blue"
+														type="submit">
+														<i class="material-icons">mode_edit</i>
+													</button>
 												</form>
-												
-												
-											<form action="deletelocation.do" method="POST">
-											<button class="btn waves-effect waves-light 
-											type="submit" name="action">delete<i class="material-icons right">delete</i>
-  </button>
-											
-											
-											
-											<input type="hidden" name="location_id" value="${location.id}">
-											<a class="btn-floating btn-large red" type="submit">
-													<i class="large material-icons">delete</i>
-											</a>
-											</form>
-											
+
+
+												<form action="deletelocation.do" method="POST">
+													<button class="btn-floating btn-large red" type="submit">
+														<i class="material-icons right">delete</i>
+													</button>
+													<input type="hidden" name="trip_id"
+														value="${trip.id}">
+													<input type="hidden" name="location_id"
+														value="${location.id}">
+
+												</form>
+
 											</td>
 										</tr>
 									</c:forEach>
@@ -92,6 +101,8 @@
 					type="submit">
 					Add a Trip <i class="material-icons right">send</i>
 				</button>
+				
+			
 			</form>
 		</div>
 	</div>

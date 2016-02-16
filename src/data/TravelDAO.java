@@ -28,12 +28,13 @@ public class TravelDAO
 		loggedin = l;
 	}
 
-	public void createNewTrip(String tripName, String dateStarted, String dateEnded)
+	public void createNewTrip(User user, String tripName, String dateStarted, String dateEnded)
 	{
 
 		System.out.println("In method to create trip");
 		Trip newTrip = new Trip(loggedin, tripName, dateStarted, dateEnded);
 		System.out.println(newTrip.getId());
+		user.addTrip(newTrip);
 		em.persist(newTrip);
 
 	}
@@ -61,24 +62,40 @@ public class TravelDAO
 
 	}
 
-	public void deleteLocationById(int locationID)
+	public void deleteLocationById(Trip trip, int locationID)
 	{
 
 		System.out.println("In method to delete Location by ID");
 
 		Location loc = em.find(Location.class, locationID);
-		Trip trip = loc.getTrip_id();
-
+		
+		trip.removeLocation(loc);
 		em.remove(loc);
+		
 		// em.createNamedQuery("Location.deleteLocationById")
 		// .setParameter("id", locationID).executeUpdate();
 
-		em.refresh(trip);
+		//em.refresh(trip);
 		
-		System.out.println(trip.getLocations());
+		//System.out.println(trip.getLocations());
 		// trip.setLocations(locations);
 
 	}
+	
+	
+	
+	public void deleteTripById(User user, int tripID)
+	{
+
+		
+		System.out.println("In method to delete Location by ID");
+
+		Trip trip = em.find(Trip.class, tripID);
+		user.removeTrip(trip);
+		em.remove(trip);
+	
+	}
+	
 
 	public void creatNewLocation(Trip tripId, String locationName, String city, String country, String dateStarted,
 			String dateEnded)
@@ -88,26 +105,25 @@ public class TravelDAO
 
 		// Location loc = new Location (locationName,dateStarted, dateEnded);
 		Location loc = new Location(tripId, locationName, city, country, dateStarted, dateEnded);
+		
+		tripId.addLocation(loc);
 		// System.out.println(loc.getId());
-		Collection<Location> locations = tripId.getLocations();
-		locations.add(loc);
-		loc.setTrip_id(tripId);
-		tripId.setLocations(locations);
+	//	Collection<Location> locations = tripId.getLocations();
+//		locations.add(loc);
+//		loc.setTrip_id(tripId);
+//		tripId.setLocations(locations);
 		em.persist(loc);
 
 	}
 	
-	public void isUserManaged(User user)
-	{
-		
-		System.out.println(em.contains(user));
-	}
+
 	
 	
 	public User refreshUser (User user)
 	{
+		System.out.println("refereshig users");
 	user = em.merge(user);
-		em.refresh(user);
+	em.refresh(user);
 		return user;
 	}
 

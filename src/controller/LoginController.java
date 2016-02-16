@@ -67,7 +67,7 @@ public class LoginController
 			{
 				mv.setViewName("dashboard.jsp");
 				TravelDAO.setLoggedin(user); 
-				travelDAO.isUserManaged(user);
+				
 				mv.addObject("user", user);
 			System.out.println("User " + user.hashCode() + "  " + user.getId()) ;
 				System.out.println("in user login controller");

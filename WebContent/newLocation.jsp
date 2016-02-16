@@ -47,7 +47,7 @@
 						</div>
 					</div>
 				
-<input type ="text" name ="trip_id" value="${trip_id}">
+<input type ="hidden" name ="trip_id" value="${trip_id}">
 
 					<button class="btn waves-effect waves-light blue darken-2"
 						type="submit">
@@ -72,5 +72,11 @@
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="js/materialize.js"></script>
 	<script src="js/jquery.lettering.js"></script>
+<!-- 	<script>
+	$('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+  });
+	</script> -->
 </body>
 <footer> </footer>
