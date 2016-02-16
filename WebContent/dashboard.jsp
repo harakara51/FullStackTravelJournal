@@ -29,39 +29,44 @@
 		<div class="row" id="tripViewer">
 
 			<ul class="collapsible" data-collapsible="accordion">
+
 				<c:choose>
 					<c:when test="${! empty user.trips}">
-						<table id="triplist">
-							<c:forEach var="trip" items="${trip}">
+					<h3>${user.username} Trips</h3>
+						
+						
+								
+								<c:forEach var="trip" items="${user.trips}">
 								<li>
 									<div class="collapsible-header">
-										<i class="material-icons">grade</i>${trip.name}</div> <c:forEach
-										var="location" items="${location}">
-										<div class="collapsible-body">
-											<p>${location.locationName}</p>
+										<i class="material-icons">grade</i>${trip.trip_name}
 										</div>
-										<form action="modifylocation.do" method="POST">
-											<input type="submit" name="edit" value="Edit"> <input
-												type="submit" name="delete" value="Delete"> <input
-												type="submit" name="view" value="View">
-										</form>
-									</c:forEach>
-								    <form action="addtrip.do" method="POST">
-											<input type="submit" name="Add" value="Add">
-							</c:forEach>
-						</table>
+								
+										<div class="collapsible-body">
+											test
+										<c:forEach var="location" items="${trips.locations}">	
+												<p>Add location</p>	
+										</c:forEach>	
+										
+										<form action="addlocation.do" method="POST">
+
+						<button class="btn waves-effect waves-light blue darken-2"
+							type="submit">
+							Add a Location <i class="material-icons right">send</i>
+						</button>
+					</form>	
+										</div>
+									</li>
+								</c:forEach>
+							</table>
 					</c:when>
+					<c:otherwise>
+						<h1>List is empty</h1>
+					</c:otherwise>
 				</c:choose>
 
 				</li>
-				<li>
-					<div class="collapsible-header">
-						<i class="material-icons">grade</i>Second
-					</div>
-					<div class="collapsible-body">
-						 
-					</div>
-				</li>
+
 
 			</ul>
 		</div>
@@ -70,7 +75,7 @@
 
 			<div class="card indigo lighten-4" id="addTrip"">
 				<div class="card-content white-text">
-					<form action="GetUserTravel.do" method="POST">
+					<form action="addtrip.do" method="POST">
 
 						<button class="btn waves-effect waves-light blue darken-2"
 							type="submit">

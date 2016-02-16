@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import Entities.Location;
 import Entities.Trip;
 import Entities.User;
 import controller.LoginController;
@@ -15,35 +16,37 @@ import controller.LoginController;
 public class TravelDAO {
 	@PersistenceContext
 	private EntityManager em;
+	public static User loggedin;
 	
 	LoginDAO loginDAO = new LoginDAO();
 	
-	public void creatNewUser (String username, String password, String email)
+	public static void setLoggedin(User l) {
+		loggedin = l;
+	}
+	
+	
+
+	
+	public void createNewTrip (String tripName, String dateStarted, String dateEnded)
 	{
-		boolean isAdmin =false;
-		User newUser = new User(username,password, email,isAdmin);
-		System.out.println(newUser.getEmail());
-		em.persist(newUser);
+
+			System.out.println("In method to create trip");
+			Trip newTrip = new Trip(loggedin, tripName,dateStarted, dateEnded);
+			System.out.println(newTrip.getId());
+			em.persist(newTrip);
+
 	
 	}
 	
-	public void creatNewTrip ()
-	{
-		User User_ID = loginDAO.getUserByUsername(LoginController.USERNAME);
-			
-		Trip newTrip = new Trip(User_ID);
-		User_ID.setTrips(newTrip);	
-		System.out.println(newTrip.getId());
-		em.persist(newTrip);
-	
-	}
-	
-	public void creatNewLocation (String username, String password, String email)
+	public void creatNewLocation (String locationName, String dateStarted, String dateEnded)
 	{
 		
-		User newUser = new User(username,password, email);
-		System.out.println(newUser.getEmail());
-		em.persist(newUser);
+		System.out.println("In method to create location");
+		System.out.println(loggedin.getTrips().get(2).getTrip_name());
+	//	Location loc = new Location (locationName,dateStarted, dateEnded);
+		Location loc = new Location (loggedin.getTrips().get(2), locationName,dateStarted, dateEnded);
+//		System.out.println(loc.getId());
+		em.persist(loc);
 	
 	}
 	

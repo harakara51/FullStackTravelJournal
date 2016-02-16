@@ -21,8 +21,7 @@ import data.TravelDAO;
 import Entities.User;
 
 @Controller
-@SessionAttributes(
-{ "username", "password" })
+@SessionAttributes({ "username"})
 public class LoginController
 {
 	@Autowired
@@ -30,29 +29,23 @@ public class LoginController
 	private TravelDAO travelDAO;
 	public static String USERNAME;
 
-	@ModelAttribute("username")
-	public String createUserName()
+	@ModelAttribute("user")
+	public User createUserName()
 	{
-		String username = "";
-		return username;
+		User user = new User();
+		return user;
 	}
-
-	@ModelAttribute("password")
-	public String createPassword()
-	{
-		String password = "";
-		return password;
-	}
+	
 
 	@RequestMapping(path = "GetUserTravel.do", params = "username", method = RequestMethod.POST)
 	public ModelAndView getByName(@RequestParam("username") String username, @RequestParam("password") String password)
 	{
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("username", username);
-		mv.addObject("password", password);
-		USERNAME = username;
+		
 		User user = loginDAO.getUserByUsername(username);
 		User userPW = loginDAO.getUserByPassword(password);
+
 
 		if ((user != null) && (userPW != null))
 		{
@@ -70,7 +63,9 @@ public class LoginController
 			} else
 			{
 				mv.setViewName("dashboard.jsp");
+				TravelDAO.setLoggedin(user); 
 				mv.addObject("user", user);
+			
 				System.out.println("in user login controller");
 
 				return mv;
@@ -80,13 +75,13 @@ public class LoginController
 			System.out.println("In null ");
 			mv.setViewName("index.jsp");
 			String userNotFound = "Username is incorrect";
-			mv.addObject("user", userNotFound);
+			mv.addObject("userNotFound", userNotFound);
 			return mv;
 		} else if (userPW == null)
 		{
 			mv.setViewName("index.jsp");
 			String wrongPW = "Password is incorrect";
-			mv.addObject("user", wrongPW);
+			mv.addObject("userNotFound", wrongPW);
 			return mv;
 
 		}
