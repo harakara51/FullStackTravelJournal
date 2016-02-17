@@ -37,7 +37,7 @@
 								<table>
 									<c:forEach var="location" items="${trip.locations}">
 										<tr>
-
+						<div class="card blue">
 											<td colspan="5">Trip to ${location.locationName}</td>
 											<td></td>
 											<td>
@@ -64,6 +64,7 @@
 												</form>
 
 											</td>
+										</div>	
 										</tr>
 									</c:forEach>
 								</table>

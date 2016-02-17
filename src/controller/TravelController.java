@@ -63,7 +63,14 @@ public ModelAndView addLocation(@RequestParam("trip_id") int tripId)
 
 @RequestMapping(path = "CreateLocationDB.do", method = RequestMethod.POST)
 public ModelAndView createLocationDB(@RequestParam("trip_id") int tripId, @RequestParam("location_name") String locationName, @RequestParam("city") String city, @RequestParam("country") String country,
-		@RequestParam("date_started") String dateStarted, @RequestParam("date_ended") String dateEnded, @ModelAttribute ("user") User user)
+		@RequestParam("date_started") String dateStarted, @RequestParam("date_ended") String dateEnded, 
+		@RequestParam("audio_src") String audioSrc, @RequestParam("audio_text") String audioText,@RequestParam("video_src") String videoSrc,
+		@RequestParam("video_txt") String videoText,@RequestParam("img_src") String imgSrc,@RequestParam("img_txt") String imgText,
+		@RequestParam("text_body") String textBody, @ModelAttribute ("user") User user
+		
+		
+		
+		)
 {
 	
 	
@@ -72,9 +79,14 @@ public ModelAndView createLocationDB(@RequestParam("trip_id") int tripId, @Reque
 	
 	ModelAndView mv = new ModelAndView();
 	
-	travelDAO.creatNewLocation(tempTrip, locationName,city, country, dateStarted,dateEnded);
+	Location loc =travelDAO.creatNewLocation(tempTrip, locationName,city, country, dateStarted,dateEnded);
 	
 	
+	travelDAO.creatNewAudio(loc, audioSrc, audioText);
+	
+	travelDAO.creatNewImage(loc, imgSrc, imgText);
+	travelDAO.creatNewVideo(loc, videoSrc, videoText);
+	travelDAO.creatNewText(loc, textBody);
 	user = travelDAO.refreshUser(user);
 	mv.addObject("user", user);
 	mv.setViewName("dashboard.jsp");

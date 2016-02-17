@@ -1,18 +1,17 @@
 package data;
 
-import java.util.Collection;
-
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import Entities.Audio;
+import Entities.Image;
 import Entities.Location;
+import Entities.Text;
 import Entities.Trip;
 import Entities.User;
-import controller.LoginController;
+import Entities.Video;
 
 @Transactional
 public class TravelDAO
@@ -97,7 +96,7 @@ public class TravelDAO
 	}
 	
 
-	public void creatNewLocation(Trip tripId, String locationName, String city, String country, String dateStarted,
+	public Location creatNewLocation(Trip tripId, String locationName, String city, String country, String dateStarted,
 			String dateEnded)
 	{
 
@@ -113,6 +112,8 @@ public class TravelDAO
 //		loc.setTrip_id(tripId);
 //		tripId.setLocations(locations);
 		em.persist(loc);
+		
+		return loc;
 
 	}
 	
@@ -126,5 +127,29 @@ public class TravelDAO
 	em.refresh(user);
 		return user;
 	}
-
+	
+	public void creatNewAudio(Location locationId, String audioSrc, String audioText) {
+		Audio newAudio = new Audio(locationId, audioSrc, audioText);
+		locationId.addAudio(newAudio);
+		
+		em.persist(newAudio);
+	}
+	
+	public void creatNewImage(Location locationId, String imgSrc, String imgText) {
+		Image images= new Image(locationId, imgSrc, imgText);
+		locationId.addImages(images);
+		em.persist(images);
+	}
+	
+	public void creatNewVideo(Location locationId, String videoSrc, String videoText) {
+		Video video= new Video(locationId, videoSrc, videoText);
+		locationId.addVideo(video);
+		em.persist(video);
+	}
+	
+	public void creatNewText(Location locationId, String textBody) {
+		Text text = new Text(locationId,textBody);
+		locationId.addText(text);
+		em.persist(text);
+	}
 }

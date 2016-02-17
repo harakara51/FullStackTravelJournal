@@ -26,15 +26,18 @@
 
 
 
-#test{
-	display:inline-block;
-	width: 100%;
-	margin:0 auto;
-}
 
 #loginCard {
+
+	width: 100%;
+	margin:0 auto;
+	margin-top: 10%
 	
-	width: 40%;
+}
+
+#loginCard 2{
+
+	width: 60%;
 	margin:0 auto;
 	margin-top: 10%
 	
@@ -42,7 +45,6 @@
 
 
 #addTrip {
-	
 	width:30%;
 	margin:0 auto;
 }
@@ -56,11 +58,28 @@
 
   
  nav {
- 
+
  margin:0 auto;
  
  } 
+ 
+ #test {
+
+
+	width: 80%;
+	margin:0 auto;
+ 
+ }
   
-  
+.LeftSide {
+display: inline-block;	
+	
+}
+
+.RightSide {
+	
+	display: inline-block;	
+
+}
   
   
