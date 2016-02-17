@@ -123,8 +123,8 @@ public class TravelDAO
 	public User refreshUser (User user)
 	{
 		System.out.println("refereshig users");
-	user = em.merge(user);
-	em.refresh(user);
+	user = em.merge(user); // to make the object managedd
+	em.refresh(user); //resfresh object from daabase
 		return user;
 	}
 	

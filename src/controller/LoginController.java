@@ -40,6 +40,10 @@ public class LoginController
 	}
 	
 
+	
+	
+	
+
 	@RequestMapping(path = "GetUserTravel.do", params = "username", method = RequestMethod.POST)
 	public ModelAndView getByName(@RequestParam("username") String username, @RequestParam("password") String password)
 	{
@@ -93,6 +97,9 @@ public class LoginController
 		return mv;
 
 	}
+	
+
+
 
 	@RequestMapping(path = "CreateUserTravel.do", method = RequestMethod.POST)
 	public ModelAndView createUser()

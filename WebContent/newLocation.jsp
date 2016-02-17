@@ -4,12 +4,13 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <jsp:include page="navBar.jsp" />​ ​
-<div class="row" id="test">
-<form class="col s12" action="CreateLocationDB.do" method="POST" id ="form"">
-	<div class="LeftSide">
-		<div class="card indigo lighten-4" id="loginCard">
+<div class="row" id="test3">
+
+
+		<form class="col s12 indigo lighten-1 z-depth-2" action="CreateLocationDB.do" method="POST" id ="form">
+		<div class="col s6 left"  id ="locationForm">
 			<div class="card-content white-text">
-				<span class="card-title" id="cardTitle">Create new Location</span>
+				<h3>Create new Location</h3>
 				
 					<div class="row">
 						<div class="input-field col s10">
@@ -44,89 +45,86 @@
 						</div>
 					</div>
 
-
 					<input type="hidden" name="trip_id" value="${trip_id}">
 
 					<button class="btn waves-effect waves-light blue darken-2"
 						type="submit">
 						Submit <i class="material-icons right">send</i>
 					</button>
-			
-
 
 				<div class="row">
 					<div class="input-field col s12">
 						<input id="email" type="hidden" class="validate">
 					</div>
 				</div>
-
-
 			</div>
 		</div>
-	</div>
 
-	<div class="RightSide">
-		<div class="card indigo lighten-4" id="loginCard2">
+<div class="col s3 right">
+	
 			<div class="card-content white-text">
-				<span class="card-title" id="cardTitle">Add Images</span>
+				<h5>Add Images</h5>
 			</div>
 			<div class="row">
-				<div class="input-field col s10">
+				<div class="input-field col s12 white-text">
 					<input type="text" name="img_src" id="img_src" value ="http://images4.fanpop.com/image/photos/18700000/Dragons-16falloutboy-18700713-500-313.jpg">
-					<textarea rows="" cols="" name="img_txt" id="img_txt" value ="My pets fighting">
+					<label for="img_src">Image link</label>
+					
+					<textarea rows="" cols="" name="img_txt" id="img_txt"> Caption for image
 					</textarea>
+					<!-- <label for="img_txt">Caption for Image</label> -->
 				</div>
 		</div>
 		</div>
-
-		<div class="card indigo lighten-4" id="loginCard2">
+		
+		<div class="col s3 right">
 			<div class="card-content white-text">
-				<span class="card-title" id="cardTitle">Add Video</span>
+				<h5>Add Videos</h5>
 			</div>
 			<div class="row">
-				<div class="input-field col s10">
+				<div class="input-field col s12 white-text">
 
 					<input type="text" name="video_src" id="video_src" value ="https://www.youtube.com/watch?v=HEf_xrgmuRI">
-					<textarea rows="" cols="" name="video_txt" id="video_txt" value ="my Video">
+					<label for="video_src">Image link</label>
+					
+					<textarea rows="" cols="" name="video_txt" id="video_txt"> Caption for Video
 					</textarea>
 				</div>
 			</div>
 		</div>
-		
-		<div class="card indigo lighten-4" id="loginCard2">
+		<div class="col s3 right">
 			<div class="card-content white-text">
-				<span class="card-title" id="cardTitle">Add Text</span>
+				<h5>Add Text</h5>
 			</div>
 			<div class="row">
-				<div class="input-field col s10">
+				<div class="input-field col s12 white-text">
 
 					<input type="text" name="text_header" id="text_header" value ="my test">
-					<textarea rows="" cols="" name="text_body" id="text_body" value ="textBody">
-					</textarea>
-				</div>
-			</div>
-		</div> 
-		
-		<div class="card indigo lighten-4" id="loginCard2">
-			<div class="card-content white-text">
-				<span class="card-title" id="cardTitle">Add Audio</span>
-			</div>
-			<div class="row">
-				<div class="input-field col s10">
-
-					<input type="text" name="audio_src" id="audio_src" value ="www.youtube.com">
-					<textarea rows="" cols="" name="audio_text" id="audio_txt" value ="music of the web">
+					<label for="text_header">Text Header</label>
+					<textarea rows="" cols="" name="text_body" id="text_body" > Your Story
 					</textarea>
 				</div>
 			</div>
 		</div>
-		
-		
+			<div class="col s3 right">
+			<div class="card-content white-text">
+				<h5>Add Audio</h5>
+			</div>
+			<div class="row">
+				<div class="input-field col s12 white-text">
 
-
-	</div>
+					<input type="text" name="audio_src" id="audio_src" value ="www.youtube.com">
+					<label for="audio_src">Text Header</label>
+					<textarea rows="" cols="" name="audio_text" id="audio_txt" > Audio Source
+					</textarea>
+				</div>
+			</div>
+		</div>
 		</form>
-</div>
+</div>		
+		
+	
+
 
 
 
@@ -135,6 +133,19 @@
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="js/materialize.js"></script>
 <script src="js/jquery.lettering.js"></script>
+
+<script>
+	
+	var bgColorArray = ['http://d1zlh37f1ep3tj.cloudfront.net/wp/wblob/54592E651337D2/17F2/273DA2/EptXfMQV2NJ71RMfjKxbFg/how-to-quit-your-job.jpg',
+	                    'http://paulmason.name/media/demos/full-screen-background-image/background.jpg',
+	                    'http://www.travelmediakit.com/wp-content/themes/questex-travel/images/src/bg/travel-agents.jpg'
+	                    
+	                    ],
+    selectBG = bgColorArray[Math.floor(Math.random() * bgColorArray.length)];
+ 
+$('body').css('background', 'url(' + selectBG + ')')
+	
+	</script>
 <!-- 
 <script>
 	$('.datepicker').pickadate({

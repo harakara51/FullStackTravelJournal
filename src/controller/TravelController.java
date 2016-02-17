@@ -127,11 +127,13 @@ public ModelAndView deleteLocation(@RequestParam("location_id") int locationId,@
 public ModelAndView editLocation(@RequestParam("location_id") int locationId,@ModelAttribute ("user") User user)
 {
 	System.out.println("inside creating trip to db method");
+	Location loc =travelDAO.findLocationById(locationId);
 	
 	ModelAndView mv = new ModelAndView();
 	user = travelDAO.refreshUser(user);
+	mv.addObject("location", loc);
 	mv.addObject("user", user);
-	mv.setViewName("dashboard.jsp");
+	mv.setViewName("view.jsp");
 	return mv;
 }
 

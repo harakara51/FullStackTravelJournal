@@ -7,67 +7,76 @@
 <jsp:include page="navBar.jsp" />​
 <div class="row" id="test">
 
-	<div class="card indigo lighten-4" id="newUser">Hello
-		${user.username}</div>
-
 	<div class="row" id="tripViewer">
-
-		<ul class="collapsible" data-collapsible="accordion">
-
+		<ul class="collapsible popout light-green lighten-4" data-collapsible="accordion">
 			<c:choose>
 				<c:when test="${! empty user.trips}">
-					<h3>${user.username}Trips</h3>
+					<h3>${user.username} 'sTrips</h3>
 					<c:forEach var="trip" items="${user.trips}">
 						<li>
+						<!-- <div class ="Trip Header"> -->
+						
+						
+						<div class="collapsible-header" id ="collapseHeader">
+								<i class="material-icons">grade</i>${trip.trip_name}
+		
+							</div>
+						<div class ="tripDelete">
 						<form action="deleteTrip.do" method="POST">
-													<button class="btn-floating btn-large red" type="submit">
+													<button class="btn-floating btn red" type="submit">
 														<i class="material-icons right">delete</i>
 													</button>
 													<input type="hidden" name="trip_id"
 														value="${trip.id}">
 
 												</form>
-							<div class="collapsible-header">
-								<i class="material-icons">grade</i>${trip.trip_name}
-								
-									
-							</div>
-
+							
+						</div> 
+							<!-- </div> -->
+							
 							<div class="collapsible-body indigo lighten-2">
-								<table>
+							
 									<c:forEach var="location" items="${trip.locations}">
-										<tr>
-						<div class="card blue">
-											<td colspan="5">Trip to ${location.locationName}</td>
-											<td></td>
-											<td>
+									
+											
+										
+							
+											
+											<div class="card-panel teal">
+											<div class ="tablerow">
+											<div class ="tripName">
+											Trip to ${location.locationName}
+											</div>
+											<div class ="deleteLoc">
 												<form action="editlocation.do" method="POST">
 													<input type="hidden" name="location_id"
 														value="${location.id}">
 													<button
-														class="btn-floating btn-large waves-effect waves-light blue"
+														class="btn-floating btn waves-effect waves-light blue"
 														type="submit">
 														<i class="material-icons">mode_edit</i>
 													</button>
 												</form>
-
-
-												<form action="deletelocation.do" method="POST">
-													<button class="btn-floating btn-large red" type="submit">
+											</div>
+											<div class ="editLoc">
+													<form action="deletelocation.do" method="POST">
+													<button class="btn-floating btn red" type="submit">
 														<i class="material-icons right">delete</i>
 													</button>
 													<input type="hidden" name="trip_id"
 														value="${trip.id}">
 													<input type="hidden" name="location_id"
 														value="${location.id}">
-
 												</form>
-
-											</td>
-										</div>	
-										</tr>
+											
+											</div>
+											
+											</div>
+									</div>
+							
+						
 									</c:forEach>
-								</table>
+								
 								<form action="addlocation.do" method="POST">
 
 									<input type="hidden" name="trip_id" value="${trip.id}">
@@ -112,4 +121,17 @@
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="js/materialize.js"></script>
 <script src="js/jquery.lettering.js"></script>
+<script>
+
+
+	var bgColorArray = ['http://d1zlh37f1ep3tj.cloudfront.net/wp/wblob/54592E651337D2/17F2/273DA2/EptXfMQV2NJ71RMfjKxbFg/how-to-quit-your-job.jpg',
+	                    'http://paulmason.name/media/demos/full-screen-background-image/background.jpg',
+	                    'http://www.travelmediakit.com/wp-content/themes/questex-travel/images/src/bg/travel-agents.jpg'
+	                    
+	                    ],
+    selectBG = bgColorArray[Math.floor(Math.random() * bgColorArray.length)];
+ 
+$('body').css('background', 'url(' + selectBG + ')')
+	
+	</script>
 </body>

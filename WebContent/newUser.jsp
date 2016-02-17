@@ -77,5 +77,17 @@
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="js/materialize.js"></script>
 	<script src="js/jquery.lettering.js"></script>
+	<script>
+	
+	var bgColorArray = ['http://d1zlh37f1ep3tj.cloudfront.net/wp/wblob/54592E651337D2/17F2/273DA2/EptXfMQV2NJ71RMfjKxbFg/how-to-quit-your-job.jpg',
+	                    'http://paulmason.name/media/demos/full-screen-background-image/background.jpg',
+	                    'http://www.travelmediakit.com/wp-content/themes/questex-travel/images/src/bg/travel-agents.jpg'
+	                    
+	                    ],
+    selectBG = bgColorArray[Math.floor(Math.random() * bgColorArray.length)];
+ 
+$('body').css('background', 'url(' + selectBG + ')')
+	
+	</script>
 </body>
 <footer> </footer>

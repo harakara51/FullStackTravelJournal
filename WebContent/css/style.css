@@ -5,7 +5,12 @@
 	margin: 0 auto;
 }
 
-
+html, body {
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color:    #f44336;
 }
@@ -29,7 +34,7 @@
 
 #loginCard {
 
-	width: 100%;
+	width: 50%;
 	margin:0 auto;
 	margin-top: 10%
 	
@@ -52,8 +57,8 @@
 
 
  body {
- background-color:#ffca28;
-    
+ background-repeat: no-repeat;
+ background-size: 100%;
   }
 
   
@@ -63,7 +68,7 @@
  
  } 
  
- #test {
+ #test3{
 
 
 	width: 80%;
@@ -72,14 +77,60 @@
  }
   
 .LeftSide {
-display: inline-block;	
+wdith: 50%;
+margin: 0 auto;
+
 	
 }
 
 .RightSide {
 	
 	display: inline-block;	
+	width: 25%;
 
 }
+.tablerow {
+
+	
+}
   
+.tripName {
+display: inline-block;	
+}  
+
+.deleteLoc {
+
+float: right;
+
+}  
   
+ .editLoc {
+	
+
+float: right;
+}   
+
+ #collapseHeader {
+display: inline-block;
+width: 80%;
+}
+
+.tripDelete {
+	
+display: inline-block;
+width: 10%;
+margin: 0 auto;
+} 
+
+ 
+#test3 {
+	
+margin: 0 auto;	
+} 
+
+#locationForm
+{
+	
+    border-right: 1px solid #9e9e9e;
+	
+}
