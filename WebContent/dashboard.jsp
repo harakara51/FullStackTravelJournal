@@ -47,8 +47,10 @@
 											<div class ="tripName">
 											Trip to ${location.locationName}
 											</div>
-											<div class ="deleteLoc">
+											<div class ="editLoc">
 												<form action="editlocation.do" method="POST">
+												<input type="hidden" name="trip_id"
+														value="${trip.id}">
 													<input type="hidden" name="location_id"
 														value="${location.id}">
 													<button
@@ -59,6 +61,19 @@
 												</form>
 											</div>
 											<div class ="editLoc">
+												<form action="editlocations.do" method="POST">
+												<input type="hidden" name="trip_id"
+														value="${trip.id}">
+													<input type="hidden" name="location_id"
+														value="${location.id}"> 
+													<button
+														class="btn-floating btn waves-effect waves-light green"
+														type="submit">
+														<i class="material-icons">launch</i>
+													</button>
+												</form>
+											</div>
+											<div class ="deleteLoc">
 													<form action="deletelocation.do" method="POST">
 													<button class="btn-floating btn red" type="submit">
 														<i class="material-icons right">delete</i>

@@ -12,9 +12,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import Entities.Audio;
+import Entities.Image;
 import Entities.Location;
+import Entities.Text;
 import Entities.Trip;
 import Entities.User;
+import Entities.Video;
 import data.TravelDAO;
 
 @Controller
@@ -98,6 +102,63 @@ public class TravelController
 		return mv;
 	}
 
+	@RequestMapping(path = "updateLocationDB.do", method = RequestMethod.POST)
+	public ModelAndView updateLocationDB(@RequestParam("trip_id") int tripId, @RequestParam("location_id") int locationId,
+			@RequestParam("location_name") String locationName, @RequestParam("city") String city,
+			@RequestParam("country") String country, @RequestParam("date_started") String dateStarted,
+			@RequestParam("date_ended") String dateEnded, @RequestParam("audio_src") String audioSrc,
+			@RequestParam("audio_text") String audioText, @RequestParam("video_src") String videoSrc,
+			@RequestParam("video_txt") String videoText, @RequestParam("img_src1") String imgSrc1,
+			@RequestParam("img_txt1") String imgText1, @RequestParam("img_src2") String imgSrc2,
+			@RequestParam("img_txt2") String imgText2, @RequestParam("img_src3") String imgSrc3,
+			@RequestParam("img_txt3") String imgText3, @RequestParam("img_src4") String imgSrc4,
+			@RequestParam("img_txt4") String imgText4, @RequestParam("text_body") String textBody,
+			@ModelAttribute("user") User user
+	)
+	{
+		System.out.println("inside creating location to db method");
+		Trip trip = travelDAO.findTripById(tripId);
+		ModelAndView mv = new ModelAndView();
+		Location loc = travelDAO.findLocationById(locationId);
+		loc.setLocationName(locationName);
+		loc.setTrip_id(trip);
+		loc.setCity(city);
+		loc.setCountry(country);
+		loc.setDateStarted(dateStarted);
+		loc.setDatEnded(dateEnded);
+		Collection<Audio> aud = loc.getAudios();
+		Collection<Text> txt = loc.getTexts();
+		Collection<Video> vid = loc.getVideos();
+		ArrayList<Image> img = loc.getImages();
+		String[] imgsrcs = {imgSrc1,imgSrc2,imgSrc3,imgSrc4};
+		String[] imgtexts = {imgText1,imgText2,imgText3,imgText4};
+		
+		for (Audio a : aud) {
+			a.setAudio_src(audioSrc);
+			a.setAudio_text(audioText);
+		}
+		for (int i=0; i > img.size(); i++) {
+			
+			img.get(i).setImg_src(imgsrcs[i]);
+			img.get(i).setImg_text(imgtexts[i]);
+		}
+		for (Text t : txt) {
+			t.setBigtext(textBody);
+		}
+		for (Video v : vid) {
+			v.setVideo_src(videoSrc);
+			v.setVideo_text(videoText);
+		}
+		
+System.out.println(loc);
+
+		travelDAO.updateLocation(loc);
+		user = travelDAO.refreshUser(user);
+		mv.addObject("user", user);
+		mv.setViewName("dashboard.jsp");
+		return mv;
+	}
+	
 	@RequestMapping(path = "loadDashboard.do", method = RequestMethod.GET)
 	public ModelAndView loadDashboard()
 	{
@@ -137,7 +198,6 @@ public class TravelController
 		ModelAndView mv = new ModelAndView();
 		user = travelDAO.refreshUser(user);
 		mv.addObject("location", loc);
-		mv.addObject("user", user);
 		mv.setViewName("editView.jsp");
 		return mv;
 	}
@@ -154,6 +214,21 @@ public class TravelController
 		mv.setViewName("dashboard.jsp");
 		return mv;
 	}
+	
+	@RequestMapping(path = "editlocations.do", method = RequestMethod.POST)
+	public ModelAndView editLocation(@RequestParam("location_id") int location_id)
+	{
+
+	System.out.println("inside method to edit location");
+
+	Location Loc =travelDAO.findLocationById(location_id);
+	ModelAndView mv = new ModelAndView();
+	mv.addObject("location", Loc);
+	mv.setViewName("editLocation.jsp");
+	return mv;
+
+	}
+
 
 	@RequestMapping(path = "nextLocation.do", method = RequestMethod.POST)
 	public ModelAndView nextLocation(@RequestParam("location_id") int locationId)

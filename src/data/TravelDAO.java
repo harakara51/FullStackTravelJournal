@@ -152,4 +152,21 @@ public class TravelDAO
 		locationId.addText(text);
 		em.persist(text);
 	}
+	
+	public void updateLocation (Location loc)
+	{
+		loc = em.merge(loc);		
+	}
+//	public void updateAudio (Audio aud)
+//	{
+//		aud = em.merge(aud);		
+//	}
+//	public void updateAudio (Audio aud)
+//	{
+//		aud = em.merge(aud);		
+//	}
+//	public void updateAudio (Audio aud)
+//	{
+//		aud = em.merge(aud);		
+//	}
 }
