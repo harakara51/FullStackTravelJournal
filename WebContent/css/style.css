@@ -1,136 +1,141 @@
-
 #tripViewer {
-	
 	width: 60%;
 	margin: 0 auto;
 }
 
 html, body {
--webkit-background-size: cover;
--moz-background-size: cover;
--o-background-size: cover;
-background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
+
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color:    #f44336;
+	color: #f44336;
 }
+
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    #f44336;
-   opacity:  1;
+	color: #f44336;
+	opacity: 1;
 }
+
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    #f44336
-   opacity:  1;
+	color: #f44336 opacity:  1;
 }
+
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color:    #f44336;
-}
-:placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
-  color:    #f44336;
+	color: #f44336;
 }
 
-
-
+:placeholder-shown {
+	/* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
+	color: #f44336;
+}
 
 #loginCard {
-
 	width: 50%;
-	margin:0 auto;
+	margin: 0 auto;
 	margin-top: 10%
-	
 }
 
-#loginCard 2{
+#loginCard
+ 
+2{
+width
+:
+ 
+60%;
+margin
+:
+0
+ 
+auto
+;
 
-	width: 60%;
-	margin:0 auto;
-	margin-top: 10%
 	
+margin-top
+:
+ 
+10%
 }
-
-
 #addTrip {
-	width:30%;
-	margin:0 auto;
+	width: 30%;
+	margin: 0 auto;
 }
 
+body {
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
 
+nav {
+	margin: 0 auto;
+}
 
- body {
- background-repeat: no-repeat;
- background-size: 100%;
-  }
-
-  
- nav {
-
- margin:0 auto;
- 
- } 
- 
- #test3{
-
-
+#test3 {
 	width: 80%;
-	margin:0 auto;
- 
- }
-  
-.LeftSide {
-wdith: 50%;
-margin: 0 auto;
+	margin: 0 auto;
+}
 
-	
+.LeftSide {
+	wdith: 50%;
+	margin: 0 auto;
 }
 
 .RightSide {
-	
-	display: inline-block;	
+	display: inline-block;
 	width: 25%;
-
 }
-.tablerow {
 
+.tablerow {
 	
 }
-  
+
 .tripName {
-display: inline-block;	
-}  
+	display: inline-block;
+}
 
 .deleteLoc {
+	float: right;
+}
 
-float: right;
+.editLoc {
+	float: right;
+}
 
-}  
-  
- .editLoc {
-	
-
-float: right;
-}   
-
- #collapseHeader {
-display: inline-block;
-width: 80%;
+#collapseHeader {
+	display: inline-block;
+	width: 80%;
 }
 
 .tripDelete {
-	
-display: inline-block;
-width: 10%;
-margin: 0 auto;
-} 
+	display: inline-block;
+	width: 10%;
+	margin: 0 auto;
+}
 
- 
 #test3 {
-	
-margin: 0 auto;	
-} 
+	margin: 0 auto;
+}
 
-#locationForm
-{
-	
-    border-right: 1px solid #9e9e9e;
-	
+#locationForm {
+	border-right: 1px solid #9e9e9e;
+}
+
+#smallbox {
+ width: 49%;
+
+}
+
+.container {
+/* 	width: 100%;
+	height:40%; */
+/* 	margin: 0 auto; #
+ */}	
+
+.NavButton {
+width: 50%;	
+margin: 0 auto;	
+}
+
 }

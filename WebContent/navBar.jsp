@@ -26,7 +26,7 @@
       <ul id="nav-mobile" class="left hide-on-med-and-down">
       
         <li><a href="loadDashboard.do">Dashboard</a></li>
-        <li><a href="View.jsp">View </a></li>
+       <!--  <li><a href="editlocation.do">View </a></li> -->
         <li><a href="index.jsp">Logout</a></li>
       </ul>
     </div>

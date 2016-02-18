@@ -15,7 +15,7 @@
 	media="screen,projection" />
 <title>Main View</title>
 </head>
-
+<jsp:include page="navBar.jsp" />​
 <body>
 	<div class="container">
 		<c:forEach var="image" items="${location.images}">

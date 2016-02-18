@@ -67,11 +67,40 @@
 			</div>
 			<div class="row">
 				<div class="input-field col s12 white-text">
-					<input type="text" name="img_src" id="img_src" value ="http://images4.fanpop.com/image/photos/18700000/Dragons-16falloutboy-18700713-500-313.jpg">
-					<label for="img_src">Image link</label>
-					
-					<textarea rows="" cols="" name="img_txt" id="img_txt"> Caption for image
+				  <!-- Dropdown Trigger -->
+  <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Add Image Link</a>
+
+  <!-- Dropdown Structure -->
+  <ul id='dropdown1' class='dropdown-content'>
+
+	 <li> <input type="text" name="img_src1" id="img_src1" value ="http://images4.fanpop.com/image/photos/18700000/Dragons-16falloutboy-18700713-500-313.jpg">
+
+	    <li> 
+	    		<textarea rows="" cols="" name="img_txt1" id="img_txt1"> Caption for image
+					</textarea>				
+    <li> <input type="text" name="img_src2" id="img_src2" value ="">
+
+	    <li> 
+	    		<textarea rows="" cols="" name="img_txt2" id="img_txt2"> Caption for image
 					</textarea>
+	    
+	   <li> <input type="text" name="img_src3" id="img_src3" value ="">
+
+	    <li> 
+	    		<textarea rows="" cols="" name="img_txt3" id="img_txt3"> Caption for image
+					</textarea>  
+	    <li> <input type="text" name="img_src4" id="img_src4" value ="">
+
+	    <li> 
+	    		<textarea rows="" cols="" name="img_txt4" id="img_txt4"> Caption for image
+					</textarea>
+	
+				
+    
+  </ul>
+				
+				
+				
 					<!-- <label for="img_txt">Caption for Image</label> -->
 				</div>
 		</div>
@@ -85,7 +114,7 @@
 				<div class="input-field col s12 white-text">
 
 					<input type="text" name="video_src" id="video_src" value ="https://www.youtube.com/watch?v=HEf_xrgmuRI">
-					<label for="video_src">Image link</label>
+					<label for="video_src">Video Link</label>
 					
 					<textarea rows="" cols="" name="video_txt" id="video_txt"> Caption for Video
 					</textarea>
@@ -144,6 +173,20 @@
     selectBG = bgColorArray[Math.floor(Math.random() * bgColorArray.length)];
  
 $('body').css('background', 'url(' + selectBG + ')')
+
+
+ $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: false, // Does not change width of dropdown to that of the activator
+      hover: true, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin: false, // Displays dropdown below the button
+      alignment: 'left' // Displays dropdown with edge aligned to the left of button
+    }
+  );
+
+
 	
 	</script>
 <!-- 
