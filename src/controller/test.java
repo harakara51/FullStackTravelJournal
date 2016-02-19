@@ -21,7 +21,19 @@ public class test
 		String test ="Travis";
 		String password ="1234";
 		
-User Travis = new User("Travis","dsfalf@fladsjf.com","1234");
+		String videoSrc = "ww.dsfasdf/watch?v=5a7L71jsC4M ";
+		
+		if (videoSrc.contains("youtube"))
+				{
+		String videoparsed =videoSrc.substring(videoSrc.indexOf('=') +1);
+		System.out.println(videoparsed);
+				}
+		else {
+			System.out.println(videoSrc);
+		}
+		
+//		
+//User Travis = new User("Travis","dsfalf@fladsjf.com","1234");
 		
 //		User Temp =(User)em.createNamedQuery("User.getUserByName")
 //        .setParameter("name", test).setParameter("password", password).getSingleResult();
@@ -34,9 +46,9 @@ User Travis = new User("Travis","dsfalf@fladsjf.com","1234");
 	//	System.out.println(Temp.getPassword());
 //		Travis.setUsername("TRAVIS");
 //		
-		em.getTransaction().begin();
-		em.persist(Travis);
-		em.getTransaction().commit();
+//		em.getTransaction().begin();
+//		em.persist(Travis);
+//		em.getTransaction().commit();
 
 
 		

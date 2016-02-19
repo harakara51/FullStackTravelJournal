@@ -94,6 +94,15 @@ public class TravelController
 	)
 	{
 
+		if (videoSrc.contains("youtube"))
+		{
+		 videoSrc =videoSrc.substring(videoSrc.indexOf('=') +1);
+System.out.println(videoSrc);
+		}
+else {
+	System.out.println(videoSrc);
+}
+		
 		System.out.println("inside creating location to db method");
 		Trip tempTrip = travelDAO.findTripById(tripId);
 
@@ -245,10 +254,14 @@ System.out.println(loc);
 	@RequestMapping(path = "email.do", method = RequestMethod.POST)
 	public ModelAndView sendEmail(@RequestParam("emailId") String email, @RequestParam("journalLink") String journalLInk,@ModelAttribute("user") User user )
 	{
+		journalLInk = journalLInk.substring(0,journalLInk.indexOf(","));
 
 	ModelAndView mv = new ModelAndView();
 	toEmail = email;
-	emailBody = journalLInk;
+	emailBody =  "Hello" +" check out  " + user.getUsername() + "'s Travel Journal below \n" + journalLInk + "\n\n\n" + 
+	
+			"Start creating your own travel Journatl at TravelJournal.com\n\n\n"; 
+	
 	SendEmail();
 	mv.addObject("user");
 	mv.setViewName("dashboard.jsp");
@@ -257,6 +270,8 @@ System.out.println(loc);
 	}
 
 
+	
+	
 	@RequestMapping(path = "nextLocation.do", method = RequestMethod.POST)
 	public ModelAndView nextLocation(@RequestParam("location_id") int locationId)
 	{
@@ -319,6 +334,79 @@ System.out.println(locationId);
 		}
 
 	}
+	@RequestMapping(path = "share.do", method = RequestMethod.GET)
+    public ModelAndView displayView(@RequestParam("trip") int tripId) {
+
+        System.out.println("inside method to display final view");
+        Trip trip = travelDAO.findTripById(tripId);
+        
+        Location Loc = trip.getLocations().get(0);
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("location", Loc);
+        mv.setViewName("view.jsp");
+        return mv;
+
+    }
+	
+	@RequestMapping(path = "nextView.do", method = RequestMethod.POST)
+    public ModelAndView nextView(@RequestParam("location_id") int locationId) {
+
+        Location loc = travelDAO.findLocationById(locationId);
+
+        Trip trip = loc.getTrip_id();
+
+        ArrayList<Location> locs = trip.getLocations();
+
+        int i = locs.indexOf(loc);
+        if ((i + 1) == locs.size()) {
+            ModelAndView mv = new ModelAndView();
+
+            mv.addObject("location", loc);
+
+            mv.setViewName("editView.jsp");
+            return mv;
+
+        } else {
+            Location toReturn = locs.get(i + 1);
+            ModelAndView mv = new ModelAndView();
+            mv.addObject("location", toReturn);
+
+            mv.setViewName("view.jsp");
+            return mv;
+
+        }
+
+    }
+
+
+@RequestMapping(path = "previousView.do", method = RequestMethod.POST)
+    public ModelAndView previousView(@RequestParam("location_id") int locationId) {
+        System.out.println(locationId);
+        Location loc = travelDAO.findLocationById(locationId);
+        Trip trip = loc.getTrip_id();
+        ArrayList<Location> locs = trip.getLocations();
+        int i = locs.indexOf(loc);
+
+        if (i == 0) {
+
+            ModelAndView mv = new ModelAndView();
+            mv.addObject("location", loc);
+            mv.setViewName("editView.jsp");
+            return mv;
+
+        } else {
+
+            Location toReturn = locs.get(i - 1);
+            ModelAndView mv = new ModelAndView();
+            mv.addObject("location", toReturn);
+            mv.setViewName("view.jsp");
+            return mv;
+
+        }
+
+    }
+	
+	
 	
 	public static void SendEmail ()
 	{
@@ -327,8 +415,8 @@ System.out.println(locationId);
 
 	     
 	      String from = "TranslatedNovels.com";//change accordingly
-	      final String username = "hafu52@gmail.com";//change accordingly
-	      final String password = "51Keralagon53#";//change accordingly
+	      final String username = "traveljournal51@gmail.com";//change accordingly
+	      final String password = "traveljournaltraveljournal";//change accordingly
 
 	  
 	      String host = "smtp.gmail.com";
@@ -362,9 +450,9 @@ System.out.println(locationId);
 	         message.setSubject("Travel Journal from");
 
 	         // Now set the actual message
-	         message.setText("Hello, check out this Travel Journal \n "
+	         message.setText(
 	        		 
-	            + emailBody + "\n Thank you and have a good day");
+	            emailBody );
 
 	         // Send message
 	         Transport.send(message);

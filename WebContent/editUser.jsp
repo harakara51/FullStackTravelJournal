@@ -17,7 +17,7 @@
 <link href="css/style.css" type="text/css" rel="stylesheet"
 	media="screen,projection" />
 </head>
-​
+​<jsp:include page="adminBar.jsp" />​
 <body>
 
 	​

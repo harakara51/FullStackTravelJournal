@@ -24,10 +24,10 @@
 
 <nav>
     <div class="nav-wrapper blue-grey darken-4" id = "nav1">
-      <a href="#" class="brand-logo right">${user.username} 's Travel Journal</a>
+      <a href="#" class="brand-logo right">Administrator</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
       
-        <li><a href="loadDashboard.do">Dashboard</a></li>
+        <li><a href="adminDashboard.do">Dashboard</a></li>
        <!--  <li><a href="editlocation.do">View </a></li> -->
         <li><a href="logout.do">Logout</a></li>
       </ul>

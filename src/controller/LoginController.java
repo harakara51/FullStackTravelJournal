@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import data.AdminDAO;
 import data.LoginDAO;
 import data.TravelDAO;
-
+import data.adminUser;
 import Entities.User;
 
 @Controller
@@ -143,6 +143,23 @@ public class LoginController
 
 		}
 
+	}
+	
+	
+	@RequestMapping(path = "logout.do", method = RequestMethod.GET)
+	public ModelAndView Logout()
+	{
+		System.out.println("inside logout method");
+		ModelAndView mv = new ModelAndView();
+
+		User user = new User();
+		System.out.println("User is set to null");
+		mv.addObject("user", user);
+		
+		// System.out.println("In controller and size of array is" +
+		// NovelDAO.getNovelByLanguage(language).size());
+		mv.setViewName("index.jsp");
+		return mv;
 	}
 
 }

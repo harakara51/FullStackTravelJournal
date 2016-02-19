@@ -2,6 +2,7 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,7 @@ import Entities.Video;
 import data.AdminDAO;
 import data.LoginDAO;
 import data.TravelDAO;
+import data.adminUser;
 
 @Controller
 @SessionAttributes(
@@ -70,8 +72,46 @@ public class AdminController
 			return mv;
 
 		}
+	
+	@RequestMapping(path = "adminDashboard.do", method = RequestMethod.GET)
+	public ModelAndView adminDashboard()
+	{
+
+		ModelAndView mv = new ModelAndView();
+
+
+		List<User> alluser =adminDAO.getALLUser();
+		mv.setViewName("adminView.jsp");
+		mv.addObject("allusers", alluser);
+		
+		mv.setViewName("adminView.jsp");
+			return mv;
+
+		}
+
+
+	
+
+@RequestMapping(path = "deleteAccount.do", method = RequestMethod.POST)
+public ModelAndView deleteUser(@RequestParam("username") String username)
+{
+
+	ModelAndView mv = new ModelAndView();
+	User user = loginDAO.getUserByUsername(username);
+
+	adminDAO.removeUser(user);
+	
+	List<User> alluser =adminDAO.getALLUser();
+	mv.setViewName("adminView.jsp");
+	mv.addObject("allusers", alluser);
+	
+	mv.setViewName("adminView.jsp");
+		return mv;
 
 	}
+
+
+}
 
 	
 

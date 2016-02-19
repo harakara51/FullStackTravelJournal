@@ -81,7 +81,8 @@
 
 													<li>Add Email Address</li>
 													<li><input type="text" name="emailId" id="emailId">
-													<input type="hidden" name="journalLink" value="http://localhost:8080/TravelJournal/editlocation.do">
+													<input type="hidden" name="journalLink" value="localhost:8080/TravelJournal/share.do?trip=${trip.id}">
+												<%-- 	<input type="hidden" name="journalLink" value="aunpsebastian.com:8080/traveljournal/share.do?trip=${trip.id}"> --%>
 
 													</li>
 

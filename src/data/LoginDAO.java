@@ -29,6 +29,12 @@ public class LoginDAO {
 			
 		Temp =(User)em.createNamedQuery("User.getUserByName")
         .setParameter("name", userName).getSingleResult();
+		
+//		if(Temp.getIs_admin())
+//		{
+//			
+//		Temp =	(adminUser)Temp;
+//		}
 		System.out.println("username is not nul " + Temp.getUsername() +  " and password is  " + Temp.getPassword());
 		}
 		catch (Exception e)

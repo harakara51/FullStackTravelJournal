@@ -56,4 +56,9 @@ public class AdminDAO
 		user = em.merge(user);		
 	}
 	
+	public void removeUser (User user)
+	{
+		user = em.merge(user);		
+		em.remove(user);	
+	}
 }

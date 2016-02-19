@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<jsp:include page="navBar.jsp" />​
+<jsp:include page="adminBar.jsp" />​
 <div class="row" id="test">
 
 	<div class="row" id="tripViewer">
@@ -30,29 +30,42 @@
 										type="submit">
 										<i class="material-icons">mode_edit</i>
 									</button>
+
+
+
 								</form>
 							</div>
-							
+
 							<div class="deleteLoc">
 								<form action="deleteAccount.do" method="POST">
 									<button class="btn-floating btn red" type="submit">
 										<i class="material-icons right">delete</i>
 									</button>
-									<input type="hidden" name="trip_id" value="${trip.id}">
-									<input type="hidden" name="location_id" value="${location.id}">
+									<input type="hidden" name="username" value="${user.username}">
 								</form>
 
 							</div>
 
 						</div>
-					</div>
-				</li>
-			</c:forEach>
-		</ul>
-		
+					<%-- <li>
+						<c:forEach var="trip" items="${user.trips}">
+							
+								<!-- <div class ="Trip Header"> -->
+
+
+								<div class="collapsible-header" id="collapseHeader">
+									<i class="material-icons">grade</i>${trip.trip_name}
+
+								</div>
+						</c:forEach>
+				</li> --%>
 	</div>
+	</li>
+	</c:forEach>
+	</ul>
+
+</div>
 </div>
 <div class="row" id="test"></div>
-​ ​
-​ ​<jsp:include page="background.jsp" />​
+​ ​ ​ ​<jsp:include page="background.jsp" />​
 </body>
