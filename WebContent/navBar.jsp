@@ -10,6 +10,8 @@
 	content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
 <title>Travel Journal</title> ​
 <!-- CSS  -->
+<link href='https://fonts.googleapis.com/css?family=Kameron' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link href="css/materialize.css" type="text/css" rel="stylesheet"
@@ -21,7 +23,7 @@
 <body>
 
 <nav>
-    <div class="nav-wrapper indigo">
+    <div class="nav-wrapper blue-grey darken-4" id = "nav">
       <a href="#" class="brand-logo right">${user.username} 's Travel Journal</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
       

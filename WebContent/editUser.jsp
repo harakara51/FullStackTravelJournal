@@ -23,16 +23,16 @@
 	​
 	<div class="row" id="test">
 
-		<div class="card cyan" id="loginCardIndex">
+		<div class="card indigo lighten-4" id="loginCard">
 			<div class="card-content white-text">
 
-				<span class="card-title" id="cardTitle">Create new user
+				<span class="card-title" id="cardTitle">Edit User "${user.username}"
 					Account</span>
-				<form class="col s12" action="CreateUserDB.do" method="POST">
+				<form class="col s12" action="updateUserDB.do" method="POST">
 					<div class="row">
 						<div class="input-field col s10">
 							<input id="username" name="username" type="text"
-								class="validate" placeholder = "<c:choose>
+								class="validate" value ="${user.username}" placeholder = "<c:choose>
 		<c:when test="${! empty userExist}">
 			${userExist}
 
@@ -42,19 +42,19 @@
 					</div>
 					<div class="row">
 						<div class="input-field col s10">
-							<input id="password"  name="password" type="password" class="validate"> <label
+							<input id="password"  name="password" type="text" class="validate" value ="${user.password}"> <label
 								for="password">Password</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col s10">
-							<input id="email"  name="email" type="email" class="validate"> <label
+							<input id="email"  name="email" type="email" class="validate" value ="${user.email}"> <label
 								for="email">Email</label>
 						</div>
 					</div>
 
 
-					<button class="btn waves-effect waves-light deep-orange"
+					<button class="btn waves-effect waves-light blue darken-2"
 						type="submit">
 						Submit <i class="material-icons right">send</i>
 					</button>
@@ -79,28 +79,11 @@
 	<script src="js/jquery.lettering.js"></script>
 	<script>
 	
-	var bgColorArray = [
-	        			'http://d1zlh37f1ep3tj.cloudfront.net/wp/wblob/54592E651337D2/17F2/273DA2/EptXfMQV2NJ71RMfjKxbFg/how-to-quit-your-job.jpg',
-	        			,
-
-	        			'http://www.travelmediakit.com/wp-content/themes/questex-travel/images/src/bg/travel-agents.jpg',
-	        			'http://i.imgur.com/5bywvWg.jpg', 'http://i.imgur.com/CVEXAQ1.jpg',
-
-	        			'http://i.imgur.com/RMdtSHn.jpg', 'http://i.imgur.com/9512jWc.jpg',
-
-	        			'http://i.imgur.com/pOVZsKS.jpg', 'http://i.imgur.com/pXURamd.jpg',
-
-	        			, 'http://i.imgur.com/ahibdwm.jpg',
-
-	        			, 'http://i.imgur.com/67nMKP4.jpg',
-
-	        			'http://i.imgur.com/OuLAf6I.jpg', 'http://i.imgur.com/EPavdJn.jpg',
-	        			, 'http://i.imgur.com/pWbzdXg.jpg',
-
-	        			'http://i.imgur.com/VVBsGx8.png', 'http://i.imgur.com/vEw2aAz.jpg',
-	        			'http://i.imgur.com/ZExuz3L.jpg',
-
-	        	],
+	var bgColorArray = ['http://d1zlh37f1ep3tj.cloudfront.net/wp/wblob/54592E651337D2/17F2/273DA2/EptXfMQV2NJ71RMfjKxbFg/how-to-quit-your-job.jpg',
+	                    'http://paulmason.name/media/demos/full-screen-background-image/background.jpg',
+	                    'http://www.travelmediakit.com/wp-content/themes/questex-travel/images/src/bg/travel-agents.jpg'
+	                    
+	                    ],
     selectBG = bgColorArray[Math.floor(Math.random() * bgColorArray.length)];
  
 $('body').css('background', 'url(' + selectBG + ')')

@@ -1,5 +1,8 @@
 package data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -137,6 +140,7 @@ public class TravelDAO
 	
 	public void creatNewImage(Location locationId, String imgSrc, String imgText) {
 		Image images= new Image(locationId, imgSrc, imgText);
+		System.out.println("In method in TravelDAO to create new Image " + images);
 		locationId.addImages(images);
 		em.persist(images);
 	}
@@ -157,16 +161,31 @@ public class TravelDAO
 	{
 		loc = em.merge(loc);		
 	}
-//	public void updateAudio (Audio aud)
-//	{
-//		aud = em.merge(aud);		
-//	}
-//	public void updateAudio (Audio aud)
-//	{
-//		aud = em.merge(aud);		
-//	}
-//	public void updateAudio (Audio aud)
-//	{
-//		aud = em.merge(aud);		
-//	}
+	
+	public List<User> getALLUser()
+	{
+		System.out.println("In method to get all Users");
+
+		List<User> allusers = new ArrayList<>();
+		try {
+
+	allusers = (List<User>)em.createNamedQuery("User.getALLUSER").getResultList();
+		
+		System.out.println(" size of all users " +allusers.size());
+		}
+		
+		catch (Exception e)
+		
+		{
+			System.out.println(e);
+			allusers = null;
+			
+			
+		}
+		
+		return allusers;
+		
+	}
+	
+
 }

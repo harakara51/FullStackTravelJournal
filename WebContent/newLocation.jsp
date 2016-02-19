@@ -196,5 +196,32 @@ $('body').css('background', 'url(' + selectBG + ')')
     selectYears: 15 // Creates a dropdown of 15 years to control year
   });
 	</script> -->
+	
+<script>
+
+function geocodePlaceId(geocoder, map, infowindow) {
+	  var placeId = document.getElementById('place-id').value;
+	  geocoder.geocode({'placeId': placeId}, function(results, status) {
+	    if (status === google.maps.GeocoderStatus.OK) {
+	      if (results[0]) {
+	        map.setZoom(11);
+	        map.setCenter(results[0].geometry.location);
+	        var marker = new google.maps.Marker({
+	          map: map,
+	          position: results[0].geometry.location
+	        });
+	        infowindow.setContent(results[0].formatted_address);
+	        infowindow.open(map, marker);
+	      } else {
+	        window.alert('No results found');
+	      }
+	    } else {
+	      window.alert('Geocoder failed due to: ' + status);
+	    }
+	  });
+	}
+
+
+</script>	
 </body>
 <footer> </footer>

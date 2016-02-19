@@ -28,6 +28,8 @@ public class LoginController
 	private LoginDAO loginDAO;
 	@Autowired
 	private TravelDAO travelDAO;
+	@Autowired
+	private AdminDAO adminDAO;
 	public static String USERNAME;
 
 	@ModelAttribute("user")
@@ -58,8 +60,9 @@ public class LoginController
 		{
 			if (user.getIs_admin())
 			{
-				AdminDAO Admin = new AdminDAO();
-				List<User> alluser =Admin.getALLUser();
+				System.out.println("administrator has logged in");
+				
+				List<User> alluser =adminDAO.getALLUser();
 				mv.setViewName("adminView.jsp");
 				mv.addObject("allusers", alluser);
 				mv.addObject("user", user);

@@ -7,28 +7,28 @@
 <div class="row" id="test3">
 
 
-	<form class="col s12 indigo lighten-1 z-depth-2"
+	<form class="col s12 cyan lighten-1 z-depth-2"
 		action="updateLocationDB.do" method="POST" id="form">
 		<div class="col s6 left" id="locationForm">
 			<div class="card-content white-text">
-				<h3>Create new Location</h3>
+				<h3>Edit new Location</h3>
 
 				<div class="row">
 					<div class="input-field col s10">
 						<input id="location_name" name="location_name" type="text"
-							value="${location.locationName}"><label
-							for="location_name">Location Name</label>
+							value="${location.locationName}" ><label
+							for="location_name" id ="label1">Location Name</label>
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-field col s5">
 						<input id="city" name="city" type="text" value="${location.city}"><label
-							for="city">City</label>
+							for="city" id ="label1">City</label>
 					</div>
 
 					<div class="input-field col s5">
 						<input id="country" name="country" type="text"
-							value="${location.country}"><label for="country">Country</label>
+							value="${location.country}"><label for="country" id ="label1">Country</label>
 					</div>
 				</div>
 
@@ -38,7 +38,7 @@
 						<input id="date_started" name="date_started" type="date"
 							placeholder="Date Started" class="datepicker"
 							value="${location.dateStarted}"> <label
-							for="date_started"></label>
+							for="date_started" id ="label1"></label>
 					</div>
 
 					<div class="input-field col s5">
@@ -50,7 +50,7 @@
 
 				<input type="hidden" name="trip_id" value="${location.trip_id.id}"> <input
 					type="hidden" value="${location.id}" name="location_id">
-				<button class="btn waves-effect waves-light blue darken-2"
+				<button class="btn waves-effect waves-light deep-orange"
 					type="submit">
 					Submit <i class="material-icons right">send</i>
 				</button>
@@ -63,16 +63,16 @@
 			</div>
 		</div>
 
-		<div class="col s3 right">
+		<div class="col s3 right" >
 
-			<div class="card-content white-text">
+			<div class="card-content white-text" >
 				<h5>Add Images</h5>
 			</div>
 			<div class="row">
 				<div class="input-field col s12 white-text">
 					<!-- Dropdown Trigger -->
-					<a class='dropdown-button btn' href='#' data-activates='dropdown1'>Add
-						Image Link</a>
+					<a class='dropdown-button btn deep-orange' href='#' data-activates='dropdown1'>Add
+						Image Links</a>
 
 					<!-- Dropdown Structure -->
 					<ul id='dropdown1' class='dropdown-content'>
@@ -114,14 +114,14 @@
 		
 		<div class="col s3 right">
 			<div class="card-content white-text">
-				<h5>Add Videos</h5>
+				<h5>Add Video</h5>
 			</div>
 			<div class="row">
 				<div class="input-field col s12 white-text">
 
 					<input type="text" name="video_src" id="video_src"
 						value="${location.videos[0].video_src}">
-					<label for="video_src">Video Link</label>
+					<label for="video_src" id ="label1">Video Link</label>
 					
 					<textarea rows="" cols="" name="video_txt" id="video_txt">${location.videos[0].video_text}  
 					</textarea>
@@ -130,7 +130,7 @@
 		</div>
 		<div class="col s3 right">
 			<div class="card-content white-text">
-				<h5>Add Text</h5>
+				<h5>		Add Text</h5>
 			</div>
 			<div class="row">
 				<div class="input-field col s12 white-text">
@@ -143,8 +143,9 @@
 				</div>
 			</div>
 		</div>
-			<div class="col s3 right">
-			<div class="card-content white-text">
+		
+			<div class="col s3 right white-text">
+			<div class="card-content ">
 				<h5>Add Audio</h5>
 			</div>
 			<div class="row">
@@ -152,7 +153,7 @@
 
 					<input type="text" name="audio_src" id="audio_src"
 						value="${location.audios[0].audio_src}">
-					<label for="audio_src">Text Header</label>
+					<label for="audio_src" id ="label1">Audio caption</label>
 					<textarea rows="" cols="" name="audio_text" id="audio_txt"> ${location.audios[0].audio_text}
 					</textarea>
 				</div>
@@ -173,14 +174,34 @@
 <script src="js/jquery.lettering.js"></script>
 
 <script>
+	
 	var bgColorArray = [
-			'http://d1zlh37f1ep3tj.cloudfront.net/wp/wblob/54592E651337D2/17F2/273DA2/EptXfMQV2NJ71RMfjKxbFg/how-to-quit-your-job.jpg',
-			'http://paulmason.name/media/demos/full-screen-background-image/background.jpg',
-			'http://www.travelmediakit.com/wp-content/themes/questex-travel/images/src/bg/travel-agents.jpg'
+	        			'http://d1zlh37f1ep3tj.cloudfront.net/wp/wblob/54592E651337D2/17F2/273DA2/EptXfMQV2NJ71RMfjKxbFg/how-to-quit-your-job.jpg',
+	        			,
 
-	], selectBG = bgColorArray[Math.floor(Math.random() * bgColorArray.length)];
+	        			'http://www.travelmediakit.com/wp-content/themes/questex-travel/images/src/bg/travel-agents.jpg',
+	        			'http://i.imgur.com/5bywvWg.jpg', 'http://i.imgur.com/CVEXAQ1.jpg',
 
-	$('body').css('background', 'url(' + selectBG + ')')
+	        			'http://i.imgur.com/RMdtSHn.jpg', 'http://i.imgur.com/9512jWc.jpg',
+
+	        			'http://i.imgur.com/pOVZsKS.jpg', 'http://i.imgur.com/pXURamd.jpg',
+
+	        			, 'http://i.imgur.com/ahibdwm.jpg',
+
+	        			, 'http://i.imgur.com/67nMKP4.jpg',
+
+	        			'http://i.imgur.com/OuLAf6I.jpg', 'http://i.imgur.com/EPavdJn.jpg',
+	        			, 'http://i.imgur.com/pWbzdXg.jpg',
+
+	        			'http://i.imgur.com/VVBsGx8.png', 'http://i.imgur.com/vEw2aAz.jpg',
+	        			'http://i.imgur.com/ZExuz3L.jpg',
+
+	        	],
+    selectBG = bgColorArray[Math.floor(Math.random() * bgColorArray.length)];
+ 
+$('body').css('background', 'url(' + selectBG + ')', 'background-size', 'cover','background-repeat', 'no-repeat')
+	
+	
 
 	$('.dropdown-button').dropdown({
 		inDuration : 300,

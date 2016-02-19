@@ -116,7 +116,7 @@ public class TravelController
 			@ModelAttribute("user") User user
 	)
 	{
-		System.out.println("inside creating location to db method");
+		System.out.println("WE ARE UPDATING");
 		Trip trip = travelDAO.findTripById(tripId);
 		ModelAndView mv = new ModelAndView();
 		Location loc = travelDAO.findLocationById(locationId);
@@ -137,7 +137,7 @@ public class TravelController
 			a.setAudio_src(audioSrc);
 			a.setAudio_text(audioText);
 		}
-		for (int i=0; i > img.size(); i++) {
+		for (int i=0; i < img.size(); i++) {
 			
 			img.get(i).setImg_src(imgsrcs[i]);
 			img.get(i).setImg_text(imgtexts[i]);

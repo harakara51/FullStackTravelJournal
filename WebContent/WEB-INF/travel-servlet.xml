@@ -15,6 +15,7 @@
 
 	<bean id="logindao" class="data.LoginDAO" />
 	<bean id="traveldao" class="data.TravelDAO" />
+	<bean id="admindao" class="data.AdminDAO" />
 
 	<!-- Declare EntityManagerFactory so we can inject an Entity Manager into 
 		our DAO -->

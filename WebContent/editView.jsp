@@ -16,58 +16,67 @@
 <title>Main View</title>
 </head>
 <jsp:include page="navBar.jsp" />​
-<body>
-	<div class="container">
-		<c:forEach var="image" items="${location.images}">
+<body id=view>
+	
 
-			<div class="col s4 halgin" id="smallbox">
-				<div class="card">
-					<div class="card-image">
-						<img src="${image.img_src}" class="responsive-img" />
+			<c:forEach var="image" items="${location.images}">
 
+				<div class="col s3 halgin" id="smallbox">
+					<div class="card">
+					<ul id="pics">
+						<div class="card-image">
+						<li>
+							<figure>
+							<img src="${image.img_src}" />
+							<figcaption><p>${image.img_text}</p></figcaption>
+							</figure>
+							</li>
+						</div>
+						</ul>
 					</div>
 				</div>
-			</div>
 
-		</c:forEach>
+			</c:forEach>
+		
+<div class ="videos">
+			<c:forEach var="video" items="${location.videos}">
+				<iframe width="854" height="900"
+					src="https://www.youtube.com/embed/${video.video_src}"
+					frameborder="0" allowfullscreen id ="video"></iframe>
+			</c:forEach>
 
-	</div>
-
-	<c:forEach var="video" items="${location.videos}">
-		<iframe width="854" height="480"
-			src="https://www.youtube.com/embed/${video.video_src}"
-			frameborder="0" allowfullscreen></iframe>
-	</c:forEach>
-
-	<c:forEach var="text" items="${location.texts}">
-		<P>${text.bigtext}</P>
-	</c:forEach>
-
-
-	<c:forEach var="audio" items="${location.audios}">
-		<audio controls>
-			<source src="${audio.audio_src}">
-		</audio>
-	</c:forEach>
-	<div class="NavButton">
-		<form action="previousLocation.do" method="POST">
-			<button class="btn waves-effect waves-light blue darken-2 valign"
-				type="submit ">
-				Previous Location<i class="material-icons left">fast_rewind</i>
-						
-				<input type="hidden" name="location_id"
-														value="${location.id}">
-			</button>
-		</form>
-		<form action="nextLocation.do" method="POST">
-			<button class="btn waves-effect waves-light blue darken-2 valign"
-				type="submit">
-
-				Next Location<i class="material-icons right">fast_forward</i>
-					
-				<input type="hidden" name="location_id"
-														value="${location.id}">
-			</button>
-		</form>
+			<c:forEach var="text" items="${location.texts}">
+				<P>${text.bigtext}</P>
+			</c:forEach>
+</div>
+<div class ="audio">
+			<c:forEach var="audio" items="${location.audios}">
+				<audio controls id ="aud">
+					<source src="${audio.audio_src}" >
+				</audio>
+			</c:forEach>
+</div>			
+			<div class="NavButton">
+			<div class ="prev">
+				<form action="previousLocation.do" method="POST">
+				<input
+							type="hidden" name="location_id" value="${location.id}">
+					<button class="btn waves-effect waves-light blue darken-2 halign"
+						type="submit">
+						Previous Location<i class="material-icons left">fast_rewind</i> 
+					</button>
+				</form>
+				</div>
+				<div class ="next">
+				<form action="nextLocation.do" method="POST">
+				 <input
+							type="hidden" name="location_id" value="${location.id}">
+					<button class="btn waves-effect waves-light blue darken-2 halign"
+						type="submit">
+						Next Location<i class="material-icons right">fast_forward</i>
+					</button>
+				</form>
+				</div>		
+</div>	 	
 </body>
 </html>
