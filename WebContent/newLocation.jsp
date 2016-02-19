@@ -7,7 +7,7 @@
 <div class="row" id="test3">
 
 
-		<form class="col s12 indigo lighten-1 z-depth-2" action="CreateLocationDB.do" method="POST" id ="form">
+		<form class="col s12 cyan z-depth-2" action="CreateLocationDB.do" method="POST" id ="form">
 		<div class="col s6 left"  id ="locationForm">
 			<div class="card-content white-text">
 				<h3>Create new Location</h3>
@@ -15,18 +15,18 @@
 					<div class="row">
 						<div class="input-field col s10">
 							<input id="location_name" name="location_name" type="text"  value ="Sunwell"><label
-								for="location_name">Location Name</label>
+								for="location_name" id ="label1">Location Name</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col s5">
 							<input id="city" name="city" type="text" value ="Greenwood Village"><label
-								for="city">City</label>
+								for="city" id ="label1">City</label>
 						</div>
 
 						<div class="input-field col s5">
 							<input id="country" name="country" type="text" value ="USA"><label
-								for="country">Country</label>
+								for="country" id ="label1">Country</label>
 						</div>
 					</div>
 
@@ -47,7 +47,7 @@
 
 					<input type="hidden" name="trip_id" value="${trip_id}">
 
-					<button class="btn waves-effect waves-light blue darken-2"
+					<button class="btn waves-effect waves-light deep-orange"
 						type="submit">
 						Submit <i class="material-icons right">send</i>
 					</button>
@@ -68,10 +68,10 @@
 			<div class="row">
 				<div class="input-field col s12 white-text">
 				  <!-- Dropdown Trigger -->
-  <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Add Image Link</a>
+  <a class='dropdown-button btn deep-orange' href='#' data-activates='dropdown1'>Add Image Link</a>
 
   <!-- Dropdown Structure -->
-  <ul id='dropdown1' class='dropdown-content'>
+  <ul id='dropdown1' class='dropdown-content '>
 
 	 <li> <input type="text" name="img_src1" id="img_src1" value ="http://images4.fanpop.com/image/photos/18700000/Dragons-16falloutboy-18700713-500-313.jpg">
 
@@ -108,13 +108,13 @@
 		
 		<div class="col s3 right">
 			<div class="card-content white-text">
-				<h5>Add Videos</h5>
+				<h5>Add Video</h5>
 			</div>
 			<div class="row">
 				<div class="input-field col s12 white-text">
 
 					<input type="text" name="video_src" id="video_src" value ="https://www.youtube.com/watch?v=HEf_xrgmuRI">
-					<label for="video_src">Video Link</label>
+					<label for="video_src" id ="label1">Video Link</label>
 					
 					<textarea rows="" cols="" name="video_txt" id="video_txt"> Caption for Video
 					</textarea>
@@ -129,7 +129,7 @@
 				<div class="input-field col s12 white-text">
 
 					<input type="text" name="text_header" id="text_header" value ="my test">
-					<label for="text_header">Text Header</label>
+					<label for="text_header" id ="label1">Text Header</label>
 					<textarea rows="" cols="" name="text_body" id="text_body" > Your Story
 					</textarea>
 				</div>
@@ -143,7 +143,7 @@
 				<div class="input-field col s12 white-text">
 
 					<input type="text" name="audio_src" id="audio_src" value ="www.youtube.com">
-					<label for="audio_src">Text Header</label>
+					<label for="audio_src" id ="label1">Text Header</label>
 					<textarea rows="" cols="" name="audio_text" id="audio_txt" > Audio Source
 					</textarea>
 				</div>
@@ -159,22 +159,9 @@
 
 
 ​ ​
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="js/materialize.js"></script>
-<script src="js/jquery.lettering.js"></script>
+​ ​<jsp:include page="background.jsp" />​
 
 <script>
-	
-	var bgColorArray = ['http://d1zlh37f1ep3tj.cloudfront.net/wp/wblob/54592E651337D2/17F2/273DA2/EptXfMQV2NJ71RMfjKxbFg/how-to-quit-your-job.jpg',
-	                    'http://paulmason.name/media/demos/full-screen-background-image/background.jpg',
-	                    'http://www.travelmediakit.com/wp-content/themes/questex-travel/images/src/bg/travel-agents.jpg'
-	                    
-	                    ],
-    selectBG = bgColorArray[Math.floor(Math.random() * bgColorArray.length)];
- 
-$('body').css('background', 'url(' + selectBG + ')')
-
-
  $('.dropdown-button').dropdown({
       inDuration: 300,
       outDuration: 225,

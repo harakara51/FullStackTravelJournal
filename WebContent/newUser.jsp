@@ -31,25 +31,26 @@
 				<form class="col s12" action="CreateUserDB.do" method="POST">
 					<div class="row">
 						<div class="input-field col s10">
-							<input id="username" name="username" type="text"
-								class="validate" placeholder = "<c:choose>
+							<input id="username" name="username" type="text" class="validate"
+								placeholder="<c:choose>
 		<c:when test="${! empty userExist}">
 			${userExist}
 
 		</c:when>
-	</c:choose>"> <label for="username">Username</label>
+	</c:choose>">
+							<label for="username" id="label1">Username</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col s10">
-							<input id="password"  name="password" type="password" class="validate"> <label
-								for="password">Password</label>
+							<input id="password" name="password" type="password"
+								class="validate"> <label for="password" id="label1">Password</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col s10">
-							<input id="email"  name="email" type="email" class="validate"> <label
-								for="email">Email</label>
+							<input id="email" name="email" type="email" class="validate">
+							<label for="email" id="label1">Email</label>
 						</div>
 					</div>
 
@@ -61,50 +62,17 @@
 				</form>
 
 
-<div class="row">
-						<div class="input-field col s12">
-							<input id="email" type="hidden" class="validate"> 
-						</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<input id="email" type="hidden" class="validate">
 					</div>
+				</div>
 
-				
+
 			</div>
 		</div>
 
 	</div>
-
-	​ ​
-	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script src="js/materialize.js"></script>
-	<script src="js/jquery.lettering.js"></script>
-	<script>
-	
-	var bgColorArray = [
-	        			'http://d1zlh37f1ep3tj.cloudfront.net/wp/wblob/54592E651337D2/17F2/273DA2/EptXfMQV2NJ71RMfjKxbFg/how-to-quit-your-job.jpg',
-	        			,
-
-	        			'http://www.travelmediakit.com/wp-content/themes/questex-travel/images/src/bg/travel-agents.jpg',
-	        			'http://i.imgur.com/5bywvWg.jpg', 'http://i.imgur.com/CVEXAQ1.jpg',
-
-	        			'http://i.imgur.com/RMdtSHn.jpg', 'http://i.imgur.com/9512jWc.jpg',
-
-	        			'http://i.imgur.com/pOVZsKS.jpg', 'http://i.imgur.com/pXURamd.jpg',
-
-	        			, 'http://i.imgur.com/ahibdwm.jpg',
-
-	        			, 'http://i.imgur.com/67nMKP4.jpg',
-
-	        			'http://i.imgur.com/OuLAf6I.jpg', 'http://i.imgur.com/EPavdJn.jpg',
-	        			, 'http://i.imgur.com/pWbzdXg.jpg',
-
-	        			'http://i.imgur.com/VVBsGx8.png', 'http://i.imgur.com/vEw2aAz.jpg',
-	        			'http://i.imgur.com/ZExuz3L.jpg',
-
-	        	],
-    selectBG = bgColorArray[Math.floor(Math.random() * bgColorArray.length)];
- 
-$('body').css('background', 'url(' + selectBG + ')')
-	
-	</script>
+​ ​<jsp:include page="background.jsp" />​
 </body>
 <footer> </footer>

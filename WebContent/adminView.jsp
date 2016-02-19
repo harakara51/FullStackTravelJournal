@@ -7,10 +7,9 @@
 <jsp:include page="navBar.jsp" />​
 <div class="row" id="test">
 
-	<h1>${allusers[1].username}test</h1>
 	<div class="row" id="tripViewer">
-		<ul class="collapsible popout light-green lighten-4"
-			data-collapsible="accordion">
+		<ul class="collapsible popout red" data-collapsible="accordion"
+			id="BoxofTrips">
 
 
 			<c:forEach var="user" items="${allusers}">
@@ -100,8 +99,24 @@
 <script>
 	var bgColorArray = [
 			'http://d1zlh37f1ep3tj.cloudfront.net/wp/wblob/54592E651337D2/17F2/273DA2/EptXfMQV2NJ71RMfjKxbFg/how-to-quit-your-job.jpg',
-			'http://paulmason.name/media/demos/full-screen-background-image/background.jpg',
-			'http://www.travelmediakit.com/wp-content/themes/questex-travel/images/src/bg/travel-agents.jpg'
+			,
+
+			'http://www.travelmediakit.com/wp-content/themes/questex-travel/images/src/bg/travel-agents.jpg',
+			'http://i.imgur.com/5bywvWg.jpg', 'http://i.imgur.com/CVEXAQ1.jpg',
+
+			'http://i.imgur.com/RMdtSHn.jpg', 'http://i.imgur.com/9512jWc.jpg',
+
+			'http://i.imgur.com/pOVZsKS.jpg', 'http://i.imgur.com/pXURamd.jpg',
+
+			, 'http://i.imgur.com/ahibdwm.jpg',
+
+			, 'http://i.imgur.com/67nMKP4.jpg',
+
+			'http://i.imgur.com/OuLAf6I.jpg', 'http://i.imgur.com/EPavdJn.jpg',
+			, 'http://i.imgur.com/pWbzdXg.jpg',
+
+			'http://i.imgur.com/VVBsGx8.png', 'http://i.imgur.com/vEw2aAz.jpg',
+			'http://i.imgur.com/ZExuz3L.jpg',
 
 	], selectBG = bgColorArray[Math.floor(Math.random() * bgColorArray.length)];
 

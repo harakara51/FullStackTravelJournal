@@ -23,7 +23,7 @@
 <body>
 
 <nav>
-    <div class="nav-wrapper blue-grey darken-4" id = "nav">
+    <div class="nav-wrapper blue-grey darken-4" id = "nav1">
       <a href="#" class="brand-logo right">${user.username} 's Travel Journal</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
       
