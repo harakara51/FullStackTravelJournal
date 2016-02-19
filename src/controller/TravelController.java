@@ -1,7 +1,18 @@
 package controller;
 
+
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +40,8 @@ public class TravelController
 
 	@Autowired
 	private TravelDAO travelDAO;
+	private static String toEmail;
+	private static String emailBody;
 
 	@RequestMapping(path = "addtrip.do", method = RequestMethod.POST)
 	public ModelAndView createTrip()
@@ -215,7 +228,7 @@ System.out.println(loc);
 		return mv;
 	}
 	
-	@RequestMapping(path = "editlocations.do", method = RequestMethod.POST)
+	@RequestMapping(path = "view.do", method = RequestMethod.POST)
 	public ModelAndView editLocation(@RequestParam("location_id") int location_id)
 	{
 
@@ -225,6 +238,20 @@ System.out.println(loc);
 	ModelAndView mv = new ModelAndView();
 	mv.addObject("location", Loc);
 	mv.setViewName("editLocation.jsp");
+	return mv;
+
+	}
+	
+	@RequestMapping(path = "email.do", method = RequestMethod.POST)
+	public ModelAndView sendEmail(@RequestParam("emailId") String email, @RequestParam("journalLink") String journalLInk,@ModelAttribute("user") User user )
+	{
+
+	ModelAndView mv = new ModelAndView();
+	toEmail = email;
+	emailBody = journalLInk;
+	SendEmail();
+	mv.addObject("user");
+	mv.setViewName("dashboard.jsp");
 	return mv;
 
 	}
@@ -292,5 +319,62 @@ System.out.println(locationId);
 		}
 
 	}
+	
+	public static void SendEmail ()
+	{
+		
+	      String to = toEmail;
 
-}
+	     
+	      String from = "TranslatedNovels.com";//change accordingly
+	      final String username = "hafu52@gmail.com";//change accordingly
+	      final String password = "51Keralagon53#";//change accordingly
+
+	  
+	      String host = "smtp.gmail.com";
+
+	      Properties props = new Properties();
+	      props.put("mail.smtp.auth", "true");
+	      props.put("mail.smtp.starttls.enable", "true");
+	      props.put("mail.smtp.host", host);
+	      props.put("mail.smtp.port", "587");
+
+	      // Get the Session object.
+	      Session session = Session.getInstance(props,
+	      new javax.mail.Authenticator() {
+	         protected PasswordAuthentication getPasswordAuthentication() {
+	            return new PasswordAuthentication(username, password);
+	         }
+	      });
+
+	      try {
+	         // Create a default MimeMessage object.
+	         Message message = new MimeMessage(session);
+
+	         // Set From: header field of the header.
+	         message.setFrom(new InternetAddress(from));
+
+	         // Set To: header field of the header.
+	         message.setRecipients(Message.RecipientType.TO,
+	         InternetAddress.parse(to));
+
+	         // Set Subject: header field
+	         message.setSubject("Travel Journal from");
+
+	         // Now set the actual message
+	         message.setText("Hello, check out this Travel Journal \n "
+	        		 
+	            + emailBody + "\n Thank you and have a good day");
+
+	         // Send message
+	         Transport.send(message);
+
+	         System.out.println("Sent message successfully....");
+
+	      } catch (MessagingException e) {
+	            throw new RuntimeException(e);
+	      }
+	   }
+	}
+
+

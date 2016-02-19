@@ -12,7 +12,7 @@
 			id="BoxofTrips">
 			<c:choose>
 				<c:when test="${! empty user.trips}">
-					<h3 id="userHeaderTrip">${user.username}'sTrips</h3>
+					<h3 id="userHeaderTrip">${user.username}'s Trips</h3>
 					<c:forEach var="trip" items="${user.trips}">
 						<li>
 							<!-- <div class ="Trip Header"> -->
@@ -44,8 +44,7 @@
 
 									<div class="card-panel cyan lighten-4" id="tripCard">
 										<div class="tablerow">
-											<div class="tripName">Trip to ${location.locationName}
-											</div>
+											<div class="tripName">${location.locationName}</div>
 											<div class="deleteLoc">
 												<form action="deletelocation.do" method="POST">
 													<button class="btn-floating btn red" type="submit">
@@ -59,7 +58,7 @@
 											</div>
 
 											<div class="editLoc">
-												<form action="editlocations.do" method="POST">
+												<form action="view.do" method="POST">
 													<input type="hidden" name="trip_id" value="${trip.id}">
 													<input type="hidden" name="location_id"
 														value="${location.id}">
@@ -70,15 +69,47 @@
 													</button>
 												</form>
 											</div>
-											<div class="editLoc">
+											<div class="deleteLoc">
+<form action="email.do" method="POST">
+
+												<a class=" dropdown-button btn btn-floating btn deep-orange"
+													href='#' data-activates='dropdown1'> <i
+													class="material-icons right">email</i></a>
+
+												<!-- Dropdown Structure -->
+												<ul id='dropdown1' class='dropdown-content '>
+
+													<li>Add Email Address</li>
+													<li><input type="text" name="emailId" id="emailId">
+													<input type="hidden" name="journalLink" value="http://localhost:8080/TravelJournal/editlocation.do">
+
+													</li>
+
+													<li>
+
+														
+
+															<input type="hidden" name="trip_id" value="${trip.id}">
+															<button class="btn waves-effect waves-light deep-orange"
+																type="submit">
+																Send email <i class="material-icons right">send</i>
+															</button>
+														
+													</li>
+
+												</ul>
+
+</form>
+
+											</div>
+											<div class="editLoc3">
 												<form action="editlocation.do" method="POST">
 													<input type="hidden" name="trip_id" value="${trip.id}">
 													<input type="hidden" name="location_id"
 														value="${location.id}">
-													<button
-														class="btn-floating btn waves-effect waves-light green"
+													<button class="btn waves-effect waves-light deep-orange"
 														type="submit">
-														<i class="material-icons">launch</i>
+														View <i class="material-icons right">send</i>
 													</button>
 												</form>
 											</div>
@@ -131,4 +162,15 @@
 </div>
 ​ ​
 <jsp:include page="background.jsp" />​
+<script>
+	$('.dropdown-button').dropdown({
+		inDuration : 300,
+		outDuration : 225,
+		constrain_width : false, // Does not change width of dropdown to that of the activator
+		hover : true, // Activate on hover
+		gutter : 0, // Spacing from edge
+		belowOrigin : false, // Displays dropdown below the button
+		alignment : 'left' // Displays dropdown with edge aligned to the left of button
+	});
+</script>
 </body>

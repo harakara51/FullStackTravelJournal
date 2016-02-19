@@ -49,6 +49,7 @@ public class LoginController
 	@RequestMapping(path = "GetUserTravel.do", params = "username", method = RequestMethod.POST)
 	public ModelAndView getByName(@RequestParam("username") String username, @RequestParam("password") String password)
 	{
+		System.out.println("Start");
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("username", username);
 		

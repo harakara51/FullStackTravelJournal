@@ -23,11 +23,11 @@
 	​
 	<div class="row" id="test">
 
-		<div class="card indigo lighten-4" id="loginCard">
+		<div class="card cyan" id="loginCardIndex">
 			<div class="card-content white-text">
 
-				<span class="card-title" id="cardTitle">Edit User "${user.username}"
-					Account</span>
+				<span class="card-title" id="cardTitle">Edit User Account:  "${user.username}"
+					</span>
 				<form class="col s12" action="updateUserDB.do" method="POST">
 					<div class="row">
 						<div class="input-field col s10">
@@ -37,24 +37,24 @@
 			${userExist}
 
 		</c:when>
-	</c:choose>"> <label for="username">Username</label>
+	</c:choose>"> <label for="username" id="label1">Username</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col s10">
 							<input id="password"  name="password" type="text" class="validate" value ="${user.password}"> <label
-								for="password">Password</label>
+								for="password" id="label1">Password</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col s10">
 							<input id="email"  name="email" type="email" class="validate" value ="${user.email}"> <label
-								for="email">Email</label>
+								for="email" id="label1">Email</label>
 						</div>
 					</div>
 
 
-					<button class="btn waves-effect waves-light blue darken-2"
+					<button class="btn waves-effect waves-light deep-orange"
 						type="submit">
 						Submit <i class="material-icons right">send</i>
 					</button>

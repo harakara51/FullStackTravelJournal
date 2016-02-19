@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import Entities.Location;
 import Entities.Trip;
 import Entities.User;
 import controller.LoginController;
@@ -50,30 +51,9 @@ public class AdminDAO
 	}
 
 	
-	@RequestMapping(path = "updateUserDB.do", method = RequestMethod.POST)
-	public ModelAndView createUserinDB(@RequestParam("username") String username,
-			@RequestParam("password") String password, @RequestParam("email") String email)
+	public void updateUser (User user)
 	{
-
-		System.out.println("inside method to submit data to database");
-		System.out.println("username :" + username + " password " + password + " " + email);
-
-		ModelAndView mv = new ModelAndView();
-
-		String userExist = loginDAO.creatNewUser(username, password, email);
-
-		if (userExist == null)
-		{
-			mv.setViewName("editUser.jsp");
-			return mv;
-		} else
-		{
-			mv.addObject("userExist", userExist);
-			mv.setViewName("newUser.jsp");
-			return mv;
-
-		}
-
+		user = em.merge(user);		
 	}
 	
 }

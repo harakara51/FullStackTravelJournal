@@ -48,7 +48,31 @@ public class AdminController
 		
 		return mv;
 	}
+	
+	@RequestMapping(path = "updateUserDB.do", method = RequestMethod.POST)
+	public ModelAndView updateUserinDB(@RequestParam("username") String username,
+			@RequestParam("password") String password, @RequestParam("email") String email)
+	{
+
+		System.out.println("inside method to submit data to database");
+		System.out.println("username :" + username + " password " + password + " " + email);
+
+		ModelAndView mv = new ModelAndView();
+
+		User user = loginDAO.getUserByUsername(username);
+
+		user.setEmail(email);
+		user.setPassword(password);
+		
+		adminDAO.updateUser(user);
+		
+		mv.setViewName("GetUserTravel.do");
+			return mv;
+
+		}
+
+	}
 
 	
 
-}
+
