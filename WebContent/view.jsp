@@ -47,7 +47,7 @@
 		<div class="videos">
 			<c:forEach var="video" items="${location.videos}">
 				<iframe width="854" height="900"
-					src="https://www.youtube.com/embed/${video.video_src}"
+					src="${video.video_src}"
 					frameborder="0" allowfullscreen id="video"></iframe>
 			</c:forEach>
 

@@ -77,7 +77,7 @@
 													class="material-icons right">email</i></a>
 
 												<!-- Dropdown Structure -->
-												<ul id='dropdown1' class='dropdown-content'>
+												<ul id='dropdown1' class='dropdown-content '>
 
 													<li>Add Email Address</li>
 													<li><input type="text" name="emailId" id="emailId">

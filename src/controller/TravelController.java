@@ -93,13 +93,14 @@ public class TravelController
 
 	)
 	{
-
+		String videoParsed ="";
 		if (videoSrc.contains("youtube"))
 		{
-		 videoSrc =videoSrc.substring(videoSrc.indexOf('=') +1);
+		 videoParsed =videoSrc.substring(videoSrc.indexOf('=') +1);
 System.out.println(videoSrc);
 		}
 else {
+	videoParsed =videoSrc;
 	System.out.println(videoSrc);
 }
 		
@@ -116,7 +117,7 @@ else {
 		travelDAO.creatNewImage(loc, imgSrc2, imgText2);
 		travelDAO.creatNewImage(loc, imgSrc3, imgText3);
 		travelDAO.creatNewImage(loc, imgSrc4, imgText4);
-		travelDAO.creatNewVideo(loc, videoSrc, videoText);
+		travelDAO.creatNewVideo(loc, videoParsed , videoText);
 		travelDAO.creatNewText(loc, textBody);
 		user = travelDAO.refreshUser(user);
 		mv.addObject("user", user);
@@ -138,6 +139,21 @@ else {
 			@ModelAttribute("user") User user
 	)
 	{
+		
+		
+			String videoParsed ="";
+			if (videoSrc.contains("you"))
+			{
+				int substring =videoSrc.indexOf('=')+1;
+				System.out.println(substring);
+			 videoParsed =videoSrc.substring(substring);
+	System.out.println("link contains youtube videoSrc is now " +videoParsed);
+			}
+	else {
+		videoParsed =videoSrc;
+		
+		System.out.println("link does not contains youtube videoSrc is now " +videoParsed);
+	}
 		System.out.println("WE ARE UPDATING");
 		Trip trip = travelDAO.findTripById(tripId);
 		ModelAndView mv = new ModelAndView();
@@ -168,7 +184,7 @@ else {
 			t.setBigtext(textBody);
 		}
 		for (Video v : vid) {
-			v.setVideo_src(videoSrc);
+			v.setVideo_src(videoParsed);
 			v.setVideo_text(videoText);
 		}
 		
@@ -179,7 +195,8 @@ System.out.println(loc);
 		mv.addObject("user", user);
 		mv.setViewName("dashboard.jsp");
 		return mv;
-	}
+		}
+	
 	
 	@RequestMapping(path = "loadDashboard.do", method = RequestMethod.GET)
 	public ModelAndView loadDashboard()
